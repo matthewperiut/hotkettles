@@ -1,0 +1,33 @@
+{
+  "item.hotkettles.example_item": "Example Item",
+  "item.hotkettles.clay_mug": "Clay Mug",
+
+  "block.hotkettles.kettle": "Kettle",
+  "block.hotkettles.apple_kettle": "Apple Kettle",
+  "block.hotkettles.bitter_kettle": "Bitter Kettle",
+  "block.hotkettles.lava_kettle": "Lava Kettle",
+  "block.hotkettles.milk_kettle": "Milk Kettle",
+  "block.hotkettles.poison_kettle": "Poison Kettle",
+  "block.hotkettles.water_kettle": "Water Kettle",
+  "block.hotkettles.empty_mug": "Empty Mug",
+  "block.hotkettles.cup_of_water": "Cup of Water",
+  "block.hotkettles.hot_water": "Hot Water",
+  "block.hotkettles.cup_of_milk": "Cup of Milk",
+  "block.hotkettles.steamed_milk": "Steamed Milk",
+  "block.hotkettles.cup_of_lava": "Cup of Lava",
+  "block.hotkettles.poison": "Poison",
+  "block.hotkettles.apple_cider": "Apple Cider",
+  "block.hotkettles.hot_cider": "Hot Cider",
+  "block.hotkettles.bitter_water": "Bitter Water",
+  "block.hotkettles.hot_cocoa": "Hot Cocoa",
+  "block.hotkettles.hot_chocolate": "Hot Chocolate",
+  "block.hotkettles.latte": "Latte",
+  "block.hotkettles.mocha": "Mocha",
+  "block.hotkettles.pumpkin_spice_latte": "Pumpkin Spice Latte",
+  "block.hotkettles.rose_tea": "Rose Tea",
+  "block.hotkettles.dandelion_tea": "Dandelion Tea",
+  "block.hotkettles.fairy_tea": "Fairy Tea",
+
+  "tab.hotkettles.kettle": "Hot Kettles"
+
+}

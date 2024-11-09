@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "hotkettles",
+  "version": "${version}",
+  "name": "Hot Kettles",
+  "description": "Adds some fun drinks into Minecraft",
+  "authors": [
+    "Slainlight"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+  "license": "MIT",
+  "icon": "assets/hotkettles/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.matthewperiut.hotkettles.fabric.HotKettlesFabric"
+    ],
+    "client": [
+      "com.matthewperiut.hotkettles.fabric.HotKettlesFabricClient"
+    ]
+  },
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.20.1",
+    "architectury": ">=9.1.12"
+  }
+}

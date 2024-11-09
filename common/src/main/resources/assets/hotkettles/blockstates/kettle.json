@@ -1,0 +1,32 @@
+{
+  "variants": {
+    "facing=north,kettle_type=0": { "model": "hotkettles:block/kettle_model", "y": -90},
+    "facing=east,kettle_type=0": { "model": "hotkettles:block/kettle_model", "y": 0 },
+    "facing=south,kettle_type=0": { "model": "hotkettles:block/kettle_model", "y": 90 },
+    "facing=west,kettle_type=0": { "model": "hotkettles:block/kettle_model", "y": 180 },
+    "facing=north,kettle_type=1": { "model": "hotkettles:block/poison_kettle_model", "y": -90},
+    "facing=east,kettle_type=1": { "model": "hotkettles:block/poison_kettle_model", "y": 0 },
+    "facing=south,kettle_type=1": { "model": "hotkettles:block/poison_kettle_model", "y": 90 },
+    "facing=west,kettle_type=1": { "model": "hotkettles:block/poison_kettle_model", "y": 180 },
+    "facing=north,kettle_type=2": { "model": "hotkettles:block/water_kettle_model", "y": -90},
+    "facing=east,kettle_type=2": { "model": "hotkettles:block/water_kettle_model", "y": 0 },
+    "facing=south,kettle_type=2": { "model": "hotkettles:block/water_kettle_model", "y": 90 },
+    "facing=west,kettle_type=2": { "model": "hotkettles:block/water_kettle_model", "y": 180 },
+    "facing=north,kettle_type=3": { "model": "hotkettles:block/milk_kettle_model", "y": -90},
+    "facing=east,kettle_type=3": { "model": "hotkettles:block/milk_kettle_model", "y": 0 },
+    "facing=south,kettle_type=3": { "model": "hotkettles:block/milk_kettle_model", "y": 90 },
+    "facing=west,kettle_type=3": { "model": "hotkettles:block/milk_kettle_model", "y": 180 },
+    "facing=north,kettle_type=4": { "model": "hotkettles:block/bitter_kettle_model", "y": -90},
+    "facing=east,kettle_type=4": { "model": "hotkettles:block/bitter_kettle_model", "y": 0 },
+    "facing=south,kettle_type=4": { "model": "hotkettles:block/bitter_kettle_model", "y": 90 },
+    "facing=west,kettle_type=4": { "model": "hotkettles:block/bitter_kettle_model", "y": 180 },
+    "facing=north,kettle_type=5": { "model": "hotkettles:block/apple_kettle_model", "y": -90},
+    "facing=east,kettle_type=5": { "model": "hotkettles:block/apple_kettle_model", "y": 0 },
+    "facing=south,kettle_type=5": { "model": "hotkettles:block/apple_kettle_model", "y": 90 },
+    "facing=west,kettle_type=5": { "model": "hotkettles:block/apple_kettle_model", "y": 180 },
+    "facing=north,kettle_type=6": { "model": "hotkettles:block/lava_kettle_model", "y": -90},
+    "facing=east,kettle_type=6": { "model": "hotkettles:block/lava_kettle_model", "y": 0 },
+    "facing=south,kettle_type=6": { "model": "hotkettles:block/lava_kettle_model", "y": 90 },
+    "facing=west,kettle_type=6": { "model": "hotkettles:block/lava_kettle_model", "y": 180 }
+  }
+}

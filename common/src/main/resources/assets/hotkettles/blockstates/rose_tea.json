@@ -1,0 +1,25 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "hotkettles:block/upside_down_mug_model"
+      },
+      "when": {
+        "upside_down": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "hotkettles:block/rose_tea_model"
+      },
+      "when": {
+        "upside_down": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "hotkettles:block/steam_model"
+      }
+    }
+  ]
+}

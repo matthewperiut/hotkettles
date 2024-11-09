@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "hotkettles:item/hot_chocolate",
+    "layer1": "hotkettles:item/steam"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "hotkettles:item/apple_cider"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "hotkettles:hot": 1.0
+      },
+      "model": "hotkettles:item/apple_cider_hot"
+    }
+  ]
+}
