@@ -1,13 +1,23 @@
 package com.matthewperiut.hotkettles.block;
 
+import com.matthewperiut.hotkettles.blockentity.KettleBlockEntity;
+import com.matthewperiut.hotkettles.item.HotKettleItems;
+import com.matthewperiut.hotkettles.item.KettleItem;
+import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.block.*;
+import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Property;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 
 public class MugBlock extends Block {
     public static final Property<Boolean> HOT = BooleanProperty.of("hot");
@@ -42,5 +52,15 @@ public class MugBlock extends Block {
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;
+    }
+
+    @Override
+    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        boolean hot = state.get(HOT);
+        ItemStack stack = new ItemStack(state.getBlock().asItem());
+        if (hot) {
+            stack.getOrCreateNbt().putBoolean("hot", true);
+        }
+        world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, stack));
     }
 }
