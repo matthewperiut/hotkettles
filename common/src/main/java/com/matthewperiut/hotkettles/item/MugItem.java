@@ -37,7 +37,6 @@ public class MugItem extends BlockItem {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        user.getStackInHand(hand).getOrCreateNbt().putBoolean("hot", true);
         return super.use(world, user, hand);
     }
 

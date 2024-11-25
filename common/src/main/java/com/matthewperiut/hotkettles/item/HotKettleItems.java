@@ -18,7 +18,7 @@ import static com.matthewperiut.hotkettles.HotKettles.MOD_ID;
 public class HotKettleItems {
     public static final Registrar<Item> ITEMS = MANAGER.get().get(Registries.ITEM);
     public static RegistrySupplier<Item> clay_mug = ITEMS.register(new Identifier(MOD_ID, "clay_mug"), () -> new Item(new Item.Settings().arch$tab(HotKettleItemGroups.KETTLE_TAB)));
-    public static RegistrySupplier<Item> empty_mug = ITEMS.register(new Identifier(MOD_ID, "empty_mug"), () -> new MugItem(HotKettleBlocks.empty_mug.get(), new Item.Settings().arch$tab(HotKettleItemGroups.KETTLE_TAB)));
+    public static RegistrySupplier<Item> empty_mug = ITEMS.register(new Identifier(MOD_ID, "empty_mug"), () -> new EmptyMugItem(HotKettleBlocks.empty_mug.get(), new Item.Settings().arch$tab(HotKettleItemGroups.KETTLE_TAB)));
     public static RegistrySupplier<Item> apple_cider = ITEMS.register(new Identifier(MOD_ID, "apple_cider"), () -> new MugItem(HotKettleBlocks.apple_cider.get(), new Item.Settings().arch$tab(HotKettleItemGroups.KETTLE_TAB)));
     public static RegistrySupplier<Item> bitter_water = ITEMS.register(new Identifier(MOD_ID, "bitter_water"), () -> new MugItem(HotKettleBlocks.bitter_water.get(), new Item.Settings().arch$tab(HotKettleItemGroups.KETTLE_TAB)));
     public static RegistrySupplier<Item> cup_of_milk = ITEMS.register(new Identifier(MOD_ID, "cup_of_milk"), () -> new MugItem(HotKettleBlocks.cup_of_milk.get(), new Item.Settings().arch$tab(HotKettleItemGroups.KETTLE_TAB)));
