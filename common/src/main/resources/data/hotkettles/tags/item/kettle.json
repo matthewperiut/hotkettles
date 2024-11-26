@@ -1,0 +1,11 @@
+{
+  "values": [
+    "hotkettles:kettle",
+    "hotkettles:apple_kettle",
+    "hotkettles:bitter_kettle",
+    "hotkettles:lava_kettle",
+    "hotkettles:milk_kettle",
+    "hotkettles:poison_kettle",
+    "hotkettles:water_kettle"
+  ]
+}

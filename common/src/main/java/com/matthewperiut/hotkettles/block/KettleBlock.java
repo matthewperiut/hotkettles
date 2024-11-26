@@ -20,6 +20,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -114,7 +115,7 @@ public class KettleBlock extends BlockWithEntity {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ItemStack stack = player.getInventory().main.get(player.getInventory().selectedSlot);
+        ItemStack stack = player.getStackInHand(hand);
 
         if (stack.getItem() == Items.CACTUS) {
             return fillKettleLiquid(world, pos, player, hand, stack, state, SoundEvents.ITEM_BUCKET_EMPTY, 1, true);
@@ -149,6 +150,30 @@ public class KettleBlock extends BlockWithEntity {
                 return fillKettleLiquid(world, pos, player, hand, stack, state, SoundEvents.ITEM_BUCKET_EMPTY, 5, true);
             }
         }
+
+        // info
+        if (hand == Hand.MAIN_HAND) {
+            if (!world.isClient) {
+                if (stack.isEmpty()) {
+                    if (state.get(KETTLE_TYPE) == 0) {
+                        player.sendMessage(Text.of("Use water bucket, milk bucket, lava bucket, or cactus on kettle to fill."));
+                    }
+                    else if (state.get(KETTLE_TYPE) == 2) {
+                        player.sendMessage(Text.of("Use cocoa beans or apple on the water kettle to brew new liquid."));
+                    }
+                    else {
+                        if (world.getBlockEntity(pos) instanceof KettleBlockEntity kettle) {
+                            if (!kettle.hot()) {
+                                player.sendMessage(Text.of("Put fire, lava, or lit furnace under kettle to heat it up."));
+                            } else {
+                                player.sendMessage(Text.of("Collect liquid with an empty mug."));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
 
         return super.onUse(state, world, pos, player, hand, hit);
     }

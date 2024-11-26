@@ -23,7 +23,22 @@ public class KettleBlockEntity extends BlockEntity {
     public int liquidHorizontalOffset = 0;
     public int liquidLevel = 0;
 
-    private boolean hot() {
+    public boolean isFull() {
+        return liquidLevel == 5;
+    }
+
+    public void addLiquid() {
+        if (liquidLevel == 0) {
+            setLiquidLevel(liquidLevel + 1);
+        } else {
+            setLiquidLevel(liquidLevel + 2);
+        }
+        if (liquidLevel > 5) {
+            setLiquidLevel(5);
+        }
+    }
+
+    public boolean hot() {
         Block block = getWorld().getBlockState(pos.down()).getBlock();
 
         return block == Blocks.LAVA || block == Blocks.LAVA_CAULDRON || block == Blocks.FIRE
@@ -34,12 +49,19 @@ public class KettleBlockEntity extends BlockEntity {
 
     public ItemStack takeLiquid(PlayerEntity player) {
         if (liquidLevel > 0) {
-            liquidLevel -= 2;
+            if (liquidLevel - 2 < 0) {
+                setLiquidLevel(0);
+            } else {
+                setLiquidLevel(liquidLevel - 2);
+            }
         } else {
             return null;
         }
         if (liquidLevel <= 0) {
-            liquidLevel = 0;
+            setLiquidLevel(0);
+            setLiquidHorizontalOffset(0);
+            world.setBlockState(pos, world.getBlockState(pos).with(KettleBlock.KETTLE_TYPE, 0));
+            return null;
         }
 
         // 0: empty

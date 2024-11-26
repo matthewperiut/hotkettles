@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "minecraft:cactus"
+    }
+  },
+  "pattern": [
+    " X ",
+    "XCX",
+    "XXX"
+  ],
+  "result": {
+    "count": 1,
+    "item": "hotkettles:poison_kettle"
+  }
+}

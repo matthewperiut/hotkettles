@@ -14,6 +14,8 @@ public class HotKettles {
     public static final String MOD_ID = "hotkettles";
     public static final Supplier<RegistrarManager> MANAGER = Suppliers.memoize(() -> RegistrarManager.get(MOD_ID));
 
+    public static boolean hot_workaround;
+
     public static void init() {
         HotKettleFoodComponents.init();
         HotKettleBlocks.init();
