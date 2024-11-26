@@ -98,7 +98,66 @@ public class MugItem extends BlockItem {
 
     @Override
     public @Nullable FoodComponent getFoodComponent() {
-        return HotKettleFoodComponents.HOT_DRINK;
+        String currentItem = getTranslationKey();
+
+        switch (currentItem)
+        {
+            case "block.hotkettles.cup_of_water":       
+                return HotKettleFoodComponents.CUP_OF_WATER;
+
+            case "block.hotkettles.cup_of_water_hot":   
+                return HotKettleFoodComponents.HOT_WATER;
+
+            case "block.hotkettles.cup_of_milk":        
+                return HotKettleFoodComponents.CUP_OF_MILK;
+
+            case "block.hotkettles.cup_of_milk_hot":    
+                return HotKettleFoodComponents.STEAMED_MILK;
+
+            case "block.hotkettles.cup_of_lava":        
+                return HotKettleFoodComponents.CUP_OF_LAVA;
+
+            case "block.hotkettles.poison":             
+                return HotKettleFoodComponents.POISON;
+
+            case "block.hotkettles.apple_cider":        
+                return HotKettleFoodComponents.APPLE_CIDER;
+
+            case "block.hotkettles.apple_cider_hot":    
+                return HotKettleFoodComponents.HOT_CIDER;
+
+            case "block.hotkettles.bitter_water":       
+                return HotKettleFoodComponents.BITTER_WATER;
+
+            case "block.hotkettles.bitter_water_hot":   
+                return HotKettleFoodComponents.HOT_COCOA;
+
+            case "block.hotkettles.hot_chocolate":      
+                return HotKettleFoodComponents.HOT_CHOCOLATE;
+
+            case "block.hotkettles.latte":              
+                return HotKettleFoodComponents.LATTE;
+
+            case "block.hotkettles.mocha":              
+                return HotKettleFoodComponents.MOCHA;
+
+            case "block.hotkettles.pumpkin_spice_latte":
+                return HotKettleFoodComponents.PUMPKIN_SPICE_LATTE;
+
+            case "block.hotkettles.rose_tea":           
+                return HotKettleFoodComponents.ROSE_TEA;
+
+            case "block.hotkettles.dandelion_tea":      
+                return HotKettleFoodComponents.DANDELION_TEA;
+
+            case "block.hotkettles.fairy_tea":          
+                return HotKettleFoodComponents.FAIRY_TEA;
+
+            default:
+                return HotKettleFoodComponents.HOT_DRINK;
+        }
+
+        //return HotKettleFoodComponents.HOT_DRINK;
     }
 
 
