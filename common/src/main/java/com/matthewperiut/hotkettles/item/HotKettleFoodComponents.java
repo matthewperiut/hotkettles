@@ -15,7 +15,7 @@ public class HotKettleFoodComponents {
     /* Properties:    */                                  .hunger(0).saturationModifier(1.F).alwaysEdible().build();
     public static final FoodComponent CUP_OF_LAVA         = (new FoodComponent.Builder())
     /* Status Effect: */                                  .arch$effect( ()-> new StatusEffectInstance(StatusEffects.INSTANT_DAMAGE, 0, 4), 1.0F )
-    /* Status Effect: */                                  .arch$effect( ()-> new StatusEffectInstance(StatusEffects.WITHER, 5 * 20, 4), 1.0F )
+    /* Status Effect: */                                  .arch$effect( ()-> new StatusEffectInstance(StatusEffects.WITHER, 5 * 20, 1), 1.0F )
     /* Properties:    */                                  .hunger(0).saturationModifier(1.F).alwaysEdible().build();
 
     public static final FoodComponent CUP_OF_WATER        = (new FoodComponent.Builder())
@@ -33,6 +33,7 @@ public class HotKettleFoodComponents {
     /* Properties:    */                                  .hunger(0).saturationModifier(1.F).alwaysEdible().build();
     public static final FoodComponent FAIRY_TEA           = (new FoodComponent.Builder())
     /* Status Effect: */                                  .arch$effect( ()-> new StatusEffectInstance(StatusEffects.LEVITATION, 2 * 20, 1), 1.0F )
+    /* Status Effect: */                                  .arch$effect( ()-> new StatusEffectInstance(StatusEffects.REGENERATION, 5 * 20, 1), 1.0F )
     /* Status Effect: */                                  .arch$effect( ()-> new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 0, 4), 1.0F )
     /* Properties:    */                                  .hunger(0).saturationModifier(1.F).alwaysEdible().build();
 
