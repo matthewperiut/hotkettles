@@ -44,9 +44,10 @@ public class MugItem extends BlockItem {
     }
 
     public ActionResult place(ItemPlacementContext context) {
+        ItemStack stack = context.getStack().copy();
         ActionResult result = super.place(context);
         if (result == ActionResult.CONSUME) {
-            if (context.getStack().hasNbt() && context.getStack().getNbt().contains("hot")) {
+            if (stack.hasNbt() && stack.getNbt().contains("hot")) {
                 context.getWorld().setBlockState(
                         context.getBlockPos(),
                         context.getWorld().getBlockState(context.getBlockPos()).with(MugBlock.HOT, true)
