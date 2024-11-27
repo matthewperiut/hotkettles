@@ -103,7 +103,7 @@ public class KettleBlock extends BlockWithEntity {
             if (kettle.get() instanceof KettleItem k) {
                 if (k.kettle_type == state_type) {
                     ItemStack stack = new ItemStack(k);
-                    stack.set(LIQUID_LEVEL_COMPONENT, ((KettleBlockEntity) world.getBlockEntity(pos)).liquidLevel);
+                    stack.set(LIQUID_LEVEL_COMPONENT.get(), ((KettleBlockEntity) world.getBlockEntity(pos)).liquidLevel);
                     world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, stack));
                     return super.onBreak(world, pos, state, player);
                 }
@@ -213,7 +213,7 @@ public class KettleBlock extends BlockWithEntity {
             if (kettle.get() instanceof KettleItem k) {
                 if (k.kettle_type == state_type) {
                     ItemStack stack = new ItemStack(k);
-                    stack.set(LIQUID_LEVEL_COMPONENT, ((KettleBlockEntity) world.getBlockEntity(pos)).liquidLevel);
+                    stack.set(LIQUID_LEVEL_COMPONENT.get(), ((KettleBlockEntity) world.getBlockEntity(pos)).liquidLevel);
                     return stack;
                 }
             }

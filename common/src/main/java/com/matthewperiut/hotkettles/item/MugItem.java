@@ -21,9 +21,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
-
-import static com.matthewperiut.hotkettles.util.HotKettleComponents.HOT_DRINK_COMPONENT;
 
 public class MugItem extends BlockItem {
 
@@ -31,14 +28,10 @@ public class MugItem extends BlockItem {
         super(block, settings);
     }
 
-    @Override
-    public String getTranslationKey(ItemStack stack) {
-        boolean hot = stack.contains(HOT_DRINK_COMPONENT);
-        if (hot) {
-            return super.getTranslationKey() + "_hot";
-        } else {
-            return super.getTranslationKey();
-        }
+    boolean hot = false;
+    public MugItem(Block block, Settings settings, boolean hot) {
+        super(block, settings);
+        this.hot = hot;
     }
 
     @Override
@@ -50,7 +43,7 @@ public class MugItem extends BlockItem {
         ItemStack stack = context.getStack().copy();
         ActionResult result = super.place(context);
         if (result == ActionResult.CONSUME) {
-            if (stack.contains(HOT_DRINK_COMPONENT)) {
+            if (hot) {
                 context.getWorld().setBlockState(
                         context.getBlockPos(),
                         context.getWorld().getBlockState(context.getBlockPos()).with(MugBlock.HOT, true)

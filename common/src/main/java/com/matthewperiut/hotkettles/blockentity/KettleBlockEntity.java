@@ -18,11 +18,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-
-import static com.matthewperiut.hotkettles.util.HotKettleComponents.HOT_DRINK_COMPONENT;
-import static com.matthewperiut.hotkettles.util.HotKettleComponents.heatDrink;
 
 public class KettleBlockEntity extends BlockEntity {
     public boolean dirX = false;
@@ -87,40 +83,28 @@ public class KettleBlockEntity extends BlockEntity {
                 return new ItemStack(HotKettleItems.poison.get());
             case 2:
                 if (hot()) {
-                    ItemStack hot_water = new ItemStack(HotKettleItems.cup_of_water.get());
-                    hot_water.set(HOT_DRINK_COMPONENT, true);
-                    hot_water.set(DataComponentTypes.FOOD, heatDrink(hot_water));
-                    return hot_water;
+                    return new ItemStack(HotKettleItems.hot_water.get());
                 } else {
                     player.sendMessage(Text.of("You can make this drink hot by putting lava, torch, or lit furnace underneath kettle"), true);
                     return new ItemStack(HotKettleItems.cup_of_water.get());
                 }
             case 3:
                 if (hot()) {
-                    ItemStack hot_milk = new ItemStack(HotKettleItems.cup_of_milk.get());
-                    hot_milk.set(HOT_DRINK_COMPONENT, true);
-                    hot_milk.set(DataComponentTypes.FOOD, heatDrink(hot_milk));
-                    return hot_milk;
+                    return new ItemStack(HotKettleItems.steamed_milk.get());
                 } else {
                     player.sendMessage(Text.of("You can make this drink hot by putting lava, torch, or lit furnace underneath kettle"), true);
                     return new ItemStack(HotKettleItems.cup_of_milk.get());
                 }
             case 4:
                 if (hot()) {
-                    ItemStack bitter_hot = new ItemStack(HotKettleItems.bitter_water.get());
-                    bitter_hot.set(HOT_DRINK_COMPONENT, true);
-                    bitter_hot.set(DataComponentTypes.FOOD, heatDrink(bitter_hot));
-                    return bitter_hot;
+                    return new ItemStack(HotKettleItems.hot_cocoa.get());
                 } else {
                     player.sendMessage(Text.of("You can make this drink hot by putting lava, torch, or lit furnace underneath kettle"), true);
                     return new ItemStack(HotKettleItems.bitter_water.get());
                 }
             case 5:
                 if (hot()) {
-                    ItemStack hot_cider = new ItemStack(HotKettleItems.apple_cider.get());
-                    hot_cider.set(HOT_DRINK_COMPONENT, true);
-                    hot_cider.set(DataComponentTypes.FOOD, heatDrink(hot_cider));
-                    return hot_cider;
+                    return new ItemStack(HotKettleItems.hot_cider.get());
                 } else {
                     player.sendMessage(Text.of("You can make this drink hot by putting lava, torch, or lit furnace underneath kettle"), true);
                     return new ItemStack(HotKettleItems.apple_cider.get());

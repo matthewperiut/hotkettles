@@ -20,9 +20,9 @@ public class HotKettles {
 
     public static void init() {
         HotKettleComponents.init();
-        HotKettleFoodComponents.init();
         HotKettleBlocks.init();
         HotKettleItems.init();
+        HotKettleFoodComponents.init();
         HotKettleBlockEntities.init();
         HotKettleItemGroups.init();
     }

@@ -19,16 +19,16 @@ config = "hotkettles-common.mixins.json"
 [[dependencies.hotkettles]]
 modId="minecraft"
 type="required"
-versionRange="[1.20.4]"
+versionRange="[1.20.5,1.20.6]"
 
 [[dependencies.hotkettles]]
 modId="neoforge"
 type="required"
-versionRange="[20.4,)"
+versionRange="[0,)"
 
 [[dependencies.hotkettles]]
 modId = "architectury"
 mandatory = true
-versionRange = "[11.1.1,)"
+versionRange = "[0,)"
 ordering = "AFTER"
 side = "BOTH"

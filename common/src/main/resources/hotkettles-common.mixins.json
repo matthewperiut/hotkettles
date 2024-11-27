@@ -6,8 +6,6 @@
   "client": [
   ],
   "mixins": [
-    "HungerManagerMixin",
-    "ShapelessRecipeMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -2,13 +2,5 @@
   "parent": "item/generated",
   "textures": {
     "layer0": "hotkettles:item/cup_of_water"
-  },
-  "overrides": [
-    {
-      "predicate": {
-        "hotkettles:hot": 1.0
-      },
-      "model": "hotkettles:item/cup_of_water_hot"
-    }
-  ]
+  }
 }

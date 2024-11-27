@@ -26,8 +26,8 @@ public class KettleItem extends BlockItem {
     public ActionResult place(ItemPlacementContext context) {
         ActionResult result = super.place(context);
         if (result == ActionResult.CONSUME) {
-            if (context.getStack().contains(LIQUID_LEVEL_COMPONENT)) {
-                int liquidLevel = context.getStack().get(LIQUID_LEVEL_COMPONENT);
+            if (context.getStack().contains(LIQUID_LEVEL_COMPONENT.get())) {
+                int liquidLevel = context.getStack().get(LIQUID_LEVEL_COMPONENT.get());
                 ((KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos())).setLiquidLevel(liquidLevel);
             } else {
                 if (kettle_type == 0) {
@@ -42,8 +42,8 @@ public class KettleItem extends BlockItem {
 
     @Override
     public int getItemBarStep(ItemStack stack) {
-        if (stack.contains(LIQUID_LEVEL_COMPONENT)) {
-            int liquidLevel = stack.get(LIQUID_LEVEL_COMPONENT);
+        if (stack.contains(LIQUID_LEVEL_COMPONENT.get())) {
+            int liquidLevel = stack.get(LIQUID_LEVEL_COMPONENT.get());
             int result = (int) (liquidLevel * 2.6f);
             return result;
         }
@@ -57,8 +57,8 @@ public class KettleItem extends BlockItem {
 
     @Override
     public boolean isItemBarVisible(ItemStack stack) {
-        if (stack.contains(LIQUID_LEVEL_COMPONENT)) {
-            int liquidLevel = stack.get(LIQUID_LEVEL_COMPONENT);
+        if (stack.contains(LIQUID_LEVEL_COMPONENT.get())) {
+            int liquidLevel = stack.get(LIQUID_LEVEL_COMPONENT.get());
             return liquidLevel != 5;
         }
         return false;
