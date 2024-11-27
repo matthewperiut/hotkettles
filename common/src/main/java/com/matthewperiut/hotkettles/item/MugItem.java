@@ -76,10 +76,11 @@ public class MugItem extends BlockItem {
         }
 
         if (!world.isClient) {
-            user.removeStatusEffect(StatusEffects.POISON);
-
             if (getTranslationKey().contains("lava")) {
                 user.setOnFireFromLava();
+            }
+            if (getTranslationKey().contains("milk")) {
+                user.clearStatusEffects();
             }
         }
 
@@ -171,8 +172,6 @@ public class MugItem extends BlockItem {
             default:
                 return HotKettleFoodComponents.HOT_DRINK;
         }
-
-        //return HotKettleFoodComponents.HOT_DRINK;
     }
 
     @Override
@@ -191,14 +190,56 @@ public class MugItem extends BlockItem {
                     boolean success = false;
                     BlockState kettleBlockState = context.getWorld().getBlockState(context.getBlockPos());
 
+                    if (kettleBlockState.get(KettleBlock.KETTLE_TYPE) == 0) {
+                        if (i.equals(HotKettleItems.poison.get())) {
+                            context.getWorld().setBlockState(context.getBlockPos(), kettleBlockState.with(KettleBlock.KETTLE_TYPE, 1));
+                            kettle = (KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos());
+                            kettle.setLiquidLevel(1);
+                            kettle.setLiquidHorizontalOffset(2);
+                            success = true;
+                        }
+                        if (i.equals(HotKettleItems.cup_of_water.get())) {
+                            context.getWorld().setBlockState(context.getBlockPos(), kettleBlockState.with(KettleBlock.KETTLE_TYPE, 2));
+                            kettle = (KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos());
+                            kettle.setLiquidLevel(1);
+                            kettle.setLiquidHorizontalOffset(4);
+                            success = true;
+                        }
+                        if (i.equals(HotKettleItems.cup_of_milk.get())) {
+                            context.getWorld().setBlockState(context.getBlockPos(), kettleBlockState.with(KettleBlock.KETTLE_TYPE, 3));
+                            kettle = (KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos());
+                            kettle.setLiquidLevel(1);
+                            kettle.setLiquidHorizontalOffset(6);
+                            success = true;
+                        }
+                        if (i.equals(HotKettleItems.bitter_water.get())) {
+                            context.getWorld().setBlockState(context.getBlockPos(), kettleBlockState.with(KettleBlock.KETTLE_TYPE, 4));
+                            kettle = (KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos());
+                            kettle.setLiquidLevel(1);
+                            kettle.setLiquidHorizontalOffset(8);
+                            success = true;
+                        }
+                        if (i.equals(HotKettleItems.apple_cider.get())) {
+                            context.getWorld().setBlockState(context.getBlockPos(), kettleBlockState.with(KettleBlock.KETTLE_TYPE, 5));
+                            kettle = (KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos());
+                            kettle.setLiquidLevel(1);
+                            kettle.setLiquidHorizontalOffset(10);
+                            success = true;
+                        }
+                        if (i.equals(HotKettleItems.cup_of_lava.get())) {
+                            context.getWorld().setBlockState(context.getBlockPos(), kettleBlockState.with(KettleBlock.KETTLE_TYPE, 6));
+                            kettle = (KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos());
+                            kettle.setLiquidLevel(1);
+                            kettle.setLiquidHorizontalOffset(12);
+                            success = true;
+                        }
+
+                    }
+
                     if (i.equals(HotKettleItems.poison.get())) {
                         if (kettleBlockState.get(KettleBlock.KETTLE_TYPE) == 1) {
                             kettle.addLiquid();
                             success = true;
-                        } else if (kettleBlockState.get(KettleBlock.KETTLE_TYPE) == 0) {
-                            context.getWorld().setBlockState(context.getBlockPos(), context.getWorld().getBlockState(context.getBlockPos()).with(KettleBlock.KETTLE_TYPE, 1));
-                            KettleBlockEntity kbe = (KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos());
-                            kbe.setLiquidLevel(2);
                         }
                     }
                     if (i.equals(HotKettleItems.cup_of_water.get())) {
@@ -238,6 +279,7 @@ public class MugItem extends BlockItem {
                             context.getPlayer().setStackInHand(context.getHand(), new ItemStack(HotKettleItems.empty_mug.get()));
                         } else {
                             context.getPlayer().getStackInHand(context.getHand()).setCount(count - 1);
+                            context.getPlayer().giveItemStack(new ItemStack(HotKettleItems.empty_mug.get()));
                         }
 
                         return ActionResult.success(true);

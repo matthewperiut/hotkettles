@@ -2,6 +2,7 @@ package com.matthewperiut.hotkettles.blockentity;
 
 import com.matthewperiut.hotkettles.block.KettleBlock;
 import com.matthewperiut.hotkettles.item.HotKettleItems;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -48,6 +49,7 @@ public class KettleBlockEntity extends BlockEntity {
     }
 
     public ItemStack takeLiquid(PlayerEntity player) {
+
         if (liquidLevel > 0) {
             if (liquidLevel - 2 < 0) {
                 setLiquidLevel(0);
@@ -57,12 +59,8 @@ public class KettleBlockEntity extends BlockEntity {
         } else {
             return null;
         }
-        if (liquidLevel <= 0) {
-            setLiquidLevel(0);
-            setLiquidHorizontalOffset(0);
-            world.setBlockState(pos, world.getBlockState(pos).with(KettleBlock.KETTLE_TYPE, 0));
-            return null;
-        }
+
+
 
         // 0: empty
         // 1: poison
@@ -72,6 +70,13 @@ public class KettleBlockEntity extends BlockEntity {
         // 5: apple
         // 6: lava
         int type = liquidHorizontalOffset / 2;
+
+        if (liquidLevel <= 0) {
+            setLiquidLevel(0);
+            setLiquidHorizontalOffset(0);
+            world.setBlockState(pos, world.getBlockState(pos).with(KettleBlock.KETTLE_TYPE, 0));
+        }
+
         switch (type) {
             case 0:
                 return null;

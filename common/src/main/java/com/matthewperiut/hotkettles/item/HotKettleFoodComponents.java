@@ -10,8 +10,8 @@ public class HotKettleFoodComponents {
     public static final FoodComponent HOT_DRINK           = (new FoodComponent.Builder()).hunger(0).saturationModifier(1.F).alwaysEdible().build();
 
     public static final FoodComponent POISON              = (new FoodComponent.Builder())
-    /* Status Effect: */                                  .arch$effect( ()-> new StatusEffectInstance(StatusEffects.POISON, 5 * 20, 0), 1.0F )
-    /* Status Effect: */                                  .arch$effect( ()-> new StatusEffectInstance(StatusEffects.NAUSEA, 2 * 20, 0), 1.0F )
+    /* Status Effect: */                                  .arch$effect( ()-> new StatusEffectInstance(StatusEffects.POISON, 5 * 20, 1), 1.0F )
+    /* Status Effect: */                                  .arch$effect( ()-> new StatusEffectInstance(StatusEffects.NAUSEA, 5 * 20, 1), 1.0F )
     /* Properties:    */                                  .hunger(0).saturationModifier(1.F).alwaysEdible().build();
     public static final FoodComponent CUP_OF_LAVA         = (new FoodComponent.Builder())
     /* Properties:    */                                  .hunger(0).saturationModifier(1.F).alwaysEdible().build();
