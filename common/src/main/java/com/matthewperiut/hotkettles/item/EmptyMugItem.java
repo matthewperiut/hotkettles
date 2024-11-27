@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.util.ActionResult;
 
-public class EmptyMugItem extends MugItem {
+public class EmptyMugItem extends BlockItem {
     public EmptyMugItem(Block block, Settings settings) {
         super(block, settings);
     }

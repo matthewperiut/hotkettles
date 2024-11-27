@@ -1,9 +1,8 @@
-package com.matthewperiut.hotkettles.forge;
+package com.matthewperiut.hotkettles.neoforge;
 
 import com.matthewperiut.hotkettles.HotKettlesClient;
 import com.matthewperiut.hotkettles.block.HotKettleBlocks;
 import com.matthewperiut.hotkettles.item.HotKettleItems;
-import dev.architectury.platform.forge.EventBuses;
 import com.matthewperiut.hotkettles.HotKettles;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -11,16 +10,15 @@ import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 
 @Mod(HotKettles.MOD_ID)
-public class HotKettlesForge {
-    public HotKettlesForge() {
-        EventBuses.registerModEventBus(HotKettles.MOD_ID, FMLJavaModLoadingContext.get().getModEventBus());
+public class HotKettlesNeoForge {
+    public HotKettlesNeoForge(IEventBus modEventBus) {
         HotKettles.init();
     }
 

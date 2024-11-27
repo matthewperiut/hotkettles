@@ -1,5 +1,5 @@
-modLoader = "javafml"
-loaderVersion = "[47,)"
+modLoader="javafml" #mandatory
+loaderVersion="[2,)" #mandatory
 #issueTrackerURL = ""
 license = "MIT"
 
@@ -13,23 +13,22 @@ Adds some fun drinks into Minecraft
 '''
 logoFile = "assets/hotkettles/icon.png"
 
-[[dependencies.hotkettles]]
-modId = "forge"
-mandatory = true
-versionRange = "[47,)"
-ordering = "NONE"
-side = "BOTH"
+[[mixins]]
+config = "hotkettles-common.mixins.json"
 
 [[dependencies.hotkettles]]
-modId = "minecraft"
-mandatory = true
-versionRange = "[1.20,1.20.4]"
-ordering = "NONE"
-side = "BOTH"
+modId="minecraft"
+type="required"
+versionRange="[1.20.4]"
+
+[[dependencies.hotkettles]]
+modId="neoforge"
+type="required"
+versionRange="[20.4,)"
 
 [[dependencies.hotkettles]]
 modId = "architectury"
 mandatory = true
-versionRange = "[9.1.12,)"
+versionRange = "[11.1.1,)"
 ordering = "AFTER"
 side = "BOTH"

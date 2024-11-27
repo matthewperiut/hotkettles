@@ -4,11 +4,15 @@ import com.matthewperiut.hotkettles.blockentity.HotKettleBlockEntities;
 import com.matthewperiut.hotkettles.blockentity.KettleBlockEntity;
 import com.matthewperiut.hotkettles.item.HotKettleItems;
 import com.matthewperiut.hotkettles.item.KettleItem;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.entity.PistonBlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -29,6 +33,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
@@ -47,6 +52,11 @@ public class KettleBlock extends BlockWithEntity {
     public KettleBlock(Settings settings) {
         super(settings.luminance((state) -> state.get(KETTLE_TYPE) == 6 ? 12 : 0));
         setDefaultState(getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(KETTLE_TYPE, 0));
+    }
+
+    @Override
+    protected MapCodec<? extends BlockWithEntity> getCodec() {
+        return createCodec(KettleBlock::new);
     }
 
     @Override
@@ -92,7 +102,7 @@ public class KettleBlock extends BlockWithEntity {
     }
 
     @Override
-    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+    public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         int state_type = state.get(KETTLE_TYPE);
         for (RegistrySupplier<Item> kettle : HotKettleItems.kettles) {
             if (kettle.get() instanceof KettleItem k) {
@@ -101,16 +111,11 @@ public class KettleBlock extends BlockWithEntity {
                     NbtCompound nbt = stack.getOrCreateNbt();
                     nbt.putInt("liquidLevel", ((KettleBlockEntity) world.getBlockEntity(pos)).liquidLevel);
                     world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, stack));
-                    return;
+                    return super.onBreak(world, pos, state, player);
                 }
             }
         }
-        super.onBreak(world, pos, state, player);
-    }
-
-    @Override
-    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, HotKettleBlockEntities.kettle_block_entity_type.get(), KettleBlockEntity::tick);
+        return super.onBreak(world, pos, state, player);
     }
 
     @Override
@@ -208,7 +213,7 @@ public class KettleBlock extends BlockWithEntity {
     }
 
     @Override
-    public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+    public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
         int state_type = state.get(KETTLE_TYPE);
         for (RegistrySupplier<Item> kettle : HotKettleItems.kettles) {
             if (kettle.get() instanceof KettleItem k) {
