@@ -1,23 +1,16 @@
 package com.matthewperiut.hotkettles.block;
 
-import com.matthewperiut.hotkettles.blockentity.HotKettleBlockEntities;
 import com.matthewperiut.hotkettles.blockentity.KettleBlockEntity;
 import com.matthewperiut.hotkettles.item.HotKettleItems;
 import com.matthewperiut.hotkettles.item.KettleItem;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityTicker;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.block.entity.PistonBlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -36,6 +29,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
+
+import static com.matthewperiut.hotkettles.util.HotKettleComponents.LIQUID_LEVEL_COMPONENT;
 
 public class KettleBlock extends BlockWithEntity {
     public static final IntProperty KETTLE_TYPE = IntProperty.of("kettle_type", 0, 6);
@@ -108,8 +103,7 @@ public class KettleBlock extends BlockWithEntity {
             if (kettle.get() instanceof KettleItem k) {
                 if (k.kettle_type == state_type) {
                     ItemStack stack = new ItemStack(k);
-                    NbtCompound nbt = stack.getOrCreateNbt();
-                    nbt.putInt("liquidLevel", ((KettleBlockEntity) world.getBlockEntity(pos)).liquidLevel);
+                    stack.set(LIQUID_LEVEL_COMPONENT, ((KettleBlockEntity) world.getBlockEntity(pos)).liquidLevel);
                     world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, stack));
                     return super.onBreak(world, pos, state, player);
                 }
@@ -119,45 +113,45 @@ public class KettleBlock extends BlockWithEntity {
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ItemStack stack = player.getStackInHand(hand);
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        ItemStack stack = player.getMainHandStack();
 
         if (stack.getItem() == Items.CACTUS) {
-            return fillKettleLiquid(world, pos, player, hand, stack, state, SoundEvents.ITEM_BUCKET_EMPTY, 1, true);
+            return fillKettleLiquid(world, pos, player, stack, state, SoundEvents.ITEM_BUCKET_EMPTY, 1, true);
         }
         if (stack.getItem() == Items.WATER_BUCKET) {
-            return fillKettleLiquid(world, pos, player, hand, stack, state, SoundEvents.ITEM_BUCKET_EMPTY, 2, false);
+            return fillKettleLiquid(world, pos, player, stack, state, SoundEvents.ITEM_BUCKET_EMPTY, 2, false);
         }
         if (stack.getItem() == Items.MILK_BUCKET) {
-            return fillKettleLiquid(world, pos, player, hand, stack, state, SoundEvents.ITEM_BUCKET_EMPTY, 3, false);
+            return fillKettleLiquid(world, pos, player, stack, state, SoundEvents.ITEM_BUCKET_EMPTY, 3, false);
         }
         if (stack.getItem() == Items.LAVA_BUCKET) {
-            return fillKettleLiquid(world, pos, player, hand, stack, state, SoundEvents.ITEM_BUCKET_EMPTY, 6, false);
+            return fillKettleLiquid(world, pos, player, stack, state, SoundEvents.ITEM_BUCKET_EMPTY, 6, false);
         }
         if (stack.getItem() == Items.BUCKET) {
             if (((KettleBlockEntity)world.getBlockEntity(pos)).liquidLevel == 5) {
                 if (world.getBlockState(pos).get(KETTLE_TYPE) == 2) {
-                    return takeKettleLiquid(world, pos, player, hand, stack, state, SoundEvents.ITEM_BUCKET_FILL, Items.WATER_BUCKET);
+                    return takeKettleLiquid(world, pos, player, stack, state, SoundEvents.ITEM_BUCKET_FILL, Items.WATER_BUCKET);
                 } else if (world.getBlockState(pos).get(KETTLE_TYPE) == 3) {
-                    return takeKettleLiquid(world, pos, player, hand, stack, state, SoundEvents.ITEM_BUCKET_FILL, Items.MILK_BUCKET);
+                    return takeKettleLiquid(world, pos, player, stack, state, SoundEvents.ITEM_BUCKET_FILL, Items.MILK_BUCKET);
                 } else if (world.getBlockState(pos).get(KETTLE_TYPE) == 6) {
-                    return takeKettleLiquid(world, pos, player, hand, stack, state, SoundEvents.ITEM_BUCKET_FILL, Items.LAVA_BUCKET);
+                    return takeKettleLiquid(world, pos, player, stack, state, SoundEvents.ITEM_BUCKET_FILL, Items.LAVA_BUCKET);
                 }
             }
 
-            return takeKettleLiquid(world, pos, player, hand, stack, state, SoundEvents.ITEM_BUCKET_FILL, Items.BUCKET);
+            return takeKettleLiquid(world, pos, player, stack, state, SoundEvents.ITEM_BUCKET_FILL, Items.BUCKET);
         }
         if (world.getBlockState(pos).get(KETTLE_TYPE) == 2) {
             if (stack.getItem() == Items.COCOA_BEANS) {
-                return fillKettleLiquid(world, pos, player, hand, stack, state, SoundEvents.ITEM_BUCKET_EMPTY, 4, true);
+                return fillKettleLiquid(world, pos, player, stack, state, SoundEvents.ITEM_BUCKET_EMPTY, 4, true);
             }
             else if (stack.getItem() == Items.APPLE) {
-                return fillKettleLiquid(world, pos, player, hand, stack, state, SoundEvents.ITEM_BUCKET_EMPTY, 5, true);
+                return fillKettleLiquid(world, pos, player, stack, state, SoundEvents.ITEM_BUCKET_EMPTY, 5, true);
             }
         }
 
         // info
-        if (hand == Hand.MAIN_HAND) {
+//        if (hand == Hand.MAIN_HAND) {
             if (!world.isClient) {
                 if (stack.isEmpty()) {
                     if (state.get(KETTLE_TYPE) == 0) {
@@ -177,18 +171,18 @@ public class KettleBlock extends BlockWithEntity {
                     }
                 }
             }
-        }
+//        }
 
 
-        return super.onUse(state, world, pos, player, hand, hit);
+        return super.onUse(state, world, pos, player, hit);
     }
 
-    static ActionResult fillKettleLiquid(World world, BlockPos pos, PlayerEntity player, Hand hand, ItemStack stack, BlockState state, SoundEvent soundEvent, int nextKettleType, boolean decrement) {
+    static ActionResult fillKettleLiquid(World world, BlockPos pos, PlayerEntity player, ItemStack stack, BlockState state, SoundEvent soundEvent, int nextKettleType, boolean decrement) {
         if (!world.isClient) {
             if (decrement) {
-                player.getStackInHand(hand).decrement(1);
+                player.getMainHandStack().decrement(1);
             } else {
-                player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(Items.BUCKET)));
+                player.setStackInHand(Hand.MAIN_HAND, ItemUsage.exchangeStack(stack, player, new ItemStack(Items.BUCKET)));
             }
             world.setBlockState(pos, state.with(KETTLE_TYPE, nextKettleType));
             world.playSound((PlayerEntity)null, pos, soundEvent, SoundCategory.BLOCKS, 1.0F, 1.0F);
@@ -199,9 +193,9 @@ public class KettleBlock extends BlockWithEntity {
         return ActionResult.success(world.isClient);
     }
 
-    static ActionResult takeKettleLiquid(World world, BlockPos pos, PlayerEntity player, Hand hand, ItemStack stack, BlockState state, SoundEvent soundEvent, Item replaced) {
+    static ActionResult takeKettleLiquid(World world, BlockPos pos, PlayerEntity player, ItemStack stack, BlockState state, SoundEvent soundEvent, Item replaced) {
         if (!world.isClient) {
-            player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(replaced)));
+            player.setStackInHand(Hand.MAIN_HAND, ItemUsage.exchangeStack(stack, player, new ItemStack(replaced)));
             world.setBlockState(pos, state.with(KETTLE_TYPE, 0));
             world.playSound((PlayerEntity)null, pos, soundEvent, SoundCategory.BLOCKS, 1.0F, 1.0F);
             world.emitGameEvent((Entity)null, GameEvent.FLUID_PICKUP, pos);
@@ -219,7 +213,7 @@ public class KettleBlock extends BlockWithEntity {
             if (kettle.get() instanceof KettleItem k) {
                 if (k.kettle_type == state_type) {
                     ItemStack stack = new ItemStack(k);
-                    stack.getOrCreateNbt().putInt("liquidLevel", ((KettleBlockEntity) world.getBlockEntity(pos)).liquidLevel);
+                    stack.set(LIQUID_LEVEL_COMPONENT, ((KettleBlockEntity) world.getBlockEntity(pos)).liquidLevel);
                     return stack;
                 }
             }

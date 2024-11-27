@@ -2,22 +2,27 @@ package com.matthewperiut.hotkettles.blockentity;
 
 import com.matthewperiut.hotkettles.block.KettleBlock;
 import com.matthewperiut.hotkettles.item.HotKettleItems;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import static com.matthewperiut.hotkettles.util.HotKettleComponents.HOT_DRINK_COMPONENT;
+import static com.matthewperiut.hotkettles.util.HotKettleComponents.heatDrink;
 
 public class KettleBlockEntity extends BlockEntity {
     public boolean dirX = false;
@@ -60,8 +65,6 @@ public class KettleBlockEntity extends BlockEntity {
             return null;
         }
 
-
-
         // 0: empty
         // 1: poison
         // 2: water
@@ -85,7 +88,8 @@ public class KettleBlockEntity extends BlockEntity {
             case 2:
                 if (hot()) {
                     ItemStack hot_water = new ItemStack(HotKettleItems.cup_of_water.get());
-                    hot_water.getOrCreateNbt().putBoolean("hot", true);
+                    hot_water.set(HOT_DRINK_COMPONENT, true);
+                    hot_water.set(DataComponentTypes.FOOD, heatDrink(hot_water));
                     return hot_water;
                 } else {
                     player.sendMessage(Text.of("You can make this drink hot by putting lava, torch, or lit furnace underneath kettle"), true);
@@ -94,7 +98,8 @@ public class KettleBlockEntity extends BlockEntity {
             case 3:
                 if (hot()) {
                     ItemStack hot_milk = new ItemStack(HotKettleItems.cup_of_milk.get());
-                    hot_milk.getOrCreateNbt().putBoolean("hot", true);
+                    hot_milk.set(HOT_DRINK_COMPONENT, true);
+                    hot_milk.set(DataComponentTypes.FOOD, heatDrink(hot_milk));
                     return hot_milk;
                 } else {
                     player.sendMessage(Text.of("You can make this drink hot by putting lava, torch, or lit furnace underneath kettle"), true);
@@ -103,7 +108,8 @@ public class KettleBlockEntity extends BlockEntity {
             case 4:
                 if (hot()) {
                     ItemStack bitter_hot = new ItemStack(HotKettleItems.bitter_water.get());
-                    bitter_hot.getOrCreateNbt().putBoolean("hot", true);
+                    bitter_hot.set(HOT_DRINK_COMPONENT, true);
+                    bitter_hot.set(DataComponentTypes.FOOD, heatDrink(bitter_hot));
                     return bitter_hot;
                 } else {
                     player.sendMessage(Text.of("You can make this drink hot by putting lava, torch, or lit furnace underneath kettle"), true);
@@ -112,7 +118,8 @@ public class KettleBlockEntity extends BlockEntity {
             case 5:
                 if (hot()) {
                     ItemStack hot_cider = new ItemStack(HotKettleItems.apple_cider.get());
-                    hot_cider.getOrCreateNbt().putBoolean("hot", true);
+                    hot_cider.set(HOT_DRINK_COMPONENT, true);
+                    hot_cider.set(DataComponentTypes.FOOD, heatDrink(hot_cider));
                     return hot_cider;
                 } else {
                     player.sendMessage(Text.of("You can make this drink hot by putting lava, torch, or lit furnace underneath kettle"), true);
@@ -134,57 +141,49 @@ public class KettleBlockEntity extends BlockEntity {
         liquidHorizontalOffset = (state.get(KettleBlock.KETTLE_TYPE) * 2);
     }
 
-    public static void tick(World world, BlockPos blockPos, BlockState state, KettleBlockEntity kettleBlockEntity) {
-        // Your tick logic here
-    }
-
-    // Override the writeNbt method to save liquidLevel and liquidHorizontalOffset to NBT
     @Override
-    public void writeNbt(NbtCompound nbt) {
-        super.writeNbt(nbt);
-        nbt.putInt("LiquidLevel", this.liquidLevel);
-        nbt.putInt("LiquidHorizontalOffset", this.liquidHorizontalOffset);
-    }
-
-    // Override the readNbt method to load liquidLevel and liquidHorizontalOffset from NBT
-    @Override
-    public void readNbt(NbtCompound nbt) {
-        super.readNbt(nbt);
+    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+        super.readNbt(nbt, registryLookup);
         this.liquidLevel = nbt.getInt("LiquidLevel");
         this.liquidHorizontalOffset = nbt.getInt("LiquidHorizontalOffset");
     }
 
-    // Override toInitialChunkDataNbt to send the initial data to the client
     @Override
-    public NbtCompound toInitialChunkDataNbt() {
-        return this.createNbt();
+    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+        super.writeNbt(nbt, registryLookup);
+        nbt.putInt("LiquidLevel", this.liquidLevel);
+        nbt.putInt("LiquidHorizontalOffset", this.liquidHorizontalOffset);
     }
 
-    // Override toUpdatePacket to send updates to the client
 
     @Override
-    public @Nullable net.minecraft.network.packet.Packet<ClientPlayPacketListener> toUpdatePacket() {
+    public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registryLookup) {
+        NbtCompound nbt = new NbtCompound();
+        this.writeNbt(nbt, registryLookup);
+        return nbt;
+    }
+
+    @Override
+    public @Nullable Packet<ClientPlayPacketListener> toUpdatePacket() {
         return BlockEntityUpdateS2CPacket.create(this);
     }
 
-    // Method to set the liquid level and notify the client
     public void setLiquidLevel(int level) {
         if (this.liquidLevel != level) {
             this.liquidLevel = level;
             markDirty();
             if (this.world != null) {
-                this.world.updateListeners(this.pos, this.getCachedState(), this.getCachedState(), 3);
+                this.world.updateListeners(this.pos, this.getCachedState(), this.getCachedState(), Block.NOTIFY_ALL);
             }
         }
     }
 
-    // Method to set the liquid horizontal offset and notify the client
     public void setLiquidHorizontalOffset(int offset) {
         if (this.liquidHorizontalOffset != offset) {
             this.liquidHorizontalOffset = offset;
             markDirty();
             if (this.world != null) {
-                this.world.updateListeners(this.pos, this.getCachedState(), this.getCachedState(), 3);
+                this.world.updateListeners(this.pos, this.getCachedState(), this.getCachedState(), Block.NOTIFY_ALL);
             }
         }
     }

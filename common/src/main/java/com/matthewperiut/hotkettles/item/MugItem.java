@@ -7,6 +7,7 @@ import com.matthewperiut.hotkettles.blockentity.KettleBlockEntity;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -22,6 +23,8 @@ import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import static com.matthewperiut.hotkettles.util.HotKettleComponents.HOT_DRINK_COMPONENT;
+
 public class MugItem extends BlockItem {
 
     public MugItem(Block block, Settings settings) {
@@ -30,7 +33,7 @@ public class MugItem extends BlockItem {
 
     @Override
     public String getTranslationKey(ItemStack stack) {
-        boolean hot = stack.hasNbt() && stack.getNbt().contains("hot");
+        boolean hot = stack.contains(HOT_DRINK_COMPONENT);
         if (hot) {
             return super.getTranslationKey() + "_hot";
         } else {
@@ -47,7 +50,7 @@ public class MugItem extends BlockItem {
         ItemStack stack = context.getStack().copy();
         ActionResult result = super.place(context);
         if (result == ActionResult.CONSUME) {
-            if (stack.hasNbt() && stack.getNbt().contains("hot")) {
+            if (stack.contains(HOT_DRINK_COMPONENT)) {
                 context.getWorld().setBlockState(
                         context.getBlockPos(),
                         context.getWorld().getBlockState(context.getBlockPos()).with(MugBlock.HOT, true)
@@ -99,7 +102,7 @@ public class MugItem extends BlockItem {
             return stack;
         }
     }
-
+/*
     @Override
     public boolean isFood() {
         return true;
@@ -174,7 +177,7 @@ public class MugItem extends BlockItem {
                 return HotKettleFoodComponents.HOT_DRINK;
         }
     }
-
+*/
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
             if (context.getWorld().getBlockEntity(context.getBlockPos()) instanceof KettleBlockEntity kettle) {

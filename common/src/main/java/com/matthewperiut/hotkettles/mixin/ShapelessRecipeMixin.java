@@ -10,6 +10,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import static com.matthewperiut.hotkettles.util.HotKettleComponents.HOT_DRINK_COMPONENT;
+
 @Mixin(ShapelessRecipe.class)
 public abstract class ShapelessRecipeMixin {
 
@@ -20,7 +22,7 @@ public abstract class ShapelessRecipeMixin {
         for (int i = 0; i < recipeInputInventory.size(); i++) {
             ItemStack itemStack = recipeInputInventory.getStack(i);
             if (!itemStack.isEmpty() && itemStack.getItem() instanceof MugItem) {
-                hot = itemStack.getOrCreateNbt().getBoolean("hot");
+                hot = itemStack.contains(HOT_DRINK_COMPONENT);
                 break;
             }
         }

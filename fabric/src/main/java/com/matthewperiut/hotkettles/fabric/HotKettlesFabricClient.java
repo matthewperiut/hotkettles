@@ -15,6 +15,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
+import static com.matthewperiut.hotkettles.util.HotKettleComponents.HOT_DRINK_COMPONENT;
+
 public class HotKettlesFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
@@ -38,7 +40,7 @@ public class HotKettlesFabricClient implements ClientModInitializer {
 
         for (RegistrySupplier<Item> i : HotKettleItems.heatableDrinks) {
             ModelPredicateProviderRegistry.register(i.get(), new Identifier(HotKettles.MOD_ID, "hot"), (itemStack, clientWorld, livingEntity, seed) -> {
-                if (itemStack.hasNbt() && itemStack.getNbt().contains("hot")) {
+                if (itemStack.contains(HOT_DRINK_COMPONENT)) {
                     return 1.f;
                 }
                 return 0.f;

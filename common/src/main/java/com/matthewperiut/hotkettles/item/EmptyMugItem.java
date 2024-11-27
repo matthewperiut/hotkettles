@@ -15,11 +15,6 @@ public class EmptyMugItem extends BlockItem {
     }
 
     @Override
-    public boolean isFood() {
-        return false;
-    }
-
-    @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
         BlockEntity e = context.getWorld().getBlockEntity(context.getBlockPos());
         if (e != null) {

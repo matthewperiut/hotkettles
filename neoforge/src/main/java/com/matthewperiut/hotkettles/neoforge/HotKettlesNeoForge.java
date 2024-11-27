@@ -13,8 +13,11 @@ import net.minecraft.util.Identifier;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+
+import static com.matthewperiut.hotkettles.util.HotKettleComponents.HOT_DRINK_COMPONENT;
 
 @Mod(HotKettles.MOD_ID)
 public class HotKettlesNeoForge {
@@ -22,7 +25,7 @@ public class HotKettlesNeoForge {
         HotKettles.init();
     }
 
-    @Mod.EventBusSubscriber(modid = HotKettles.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = HotKettles.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
     {
         @SubscribeEvent
@@ -48,7 +51,7 @@ public class HotKettlesNeoForge {
 
             for (RegistrySupplier<Item> i : HotKettleItems.heatableDrinks) {
                 ModelPredicateProviderRegistry.register(i.get(), new Identifier(HotKettles.MOD_ID, "hot"), (itemStack, clientWorld, livingEntity, seed) -> {
-                    if (itemStack.hasNbt() && itemStack.getNbt().contains("hot")) {
+                    if (itemStack.contains(HOT_DRINK_COMPONENT)) {
                         return 1.f;
                     }
                     return 0.f;

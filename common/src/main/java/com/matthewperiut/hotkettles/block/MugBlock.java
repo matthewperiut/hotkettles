@@ -1,6 +1,7 @@
 package com.matthewperiut.hotkettles.block;
 
 import net.minecraft.block.*;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -12,6 +13,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+
+import static com.matthewperiut.hotkettles.util.HotKettleComponents.HOT_DRINK_COMPONENT;
+import static com.matthewperiut.hotkettles.util.HotKettleComponents.heatDrink;
 
 public class MugBlock extends Block {
     public static final Property<Boolean> HOT = BooleanProperty.of("hot");
@@ -53,7 +57,8 @@ public class MugBlock extends Block {
         boolean hot = state.get(HOT);
         ItemStack stack = new ItemStack(state.getBlock().asItem());
         if (hot) {
-            stack.getOrCreateNbt().putBoolean("hot", true);
+            stack.set(HOT_DRINK_COMPONENT, true);
+            stack.set(DataComponentTypes.FOOD, heatDrink(stack));
         }
         world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, stack));
         return super.onBreak(world, pos, state, player);

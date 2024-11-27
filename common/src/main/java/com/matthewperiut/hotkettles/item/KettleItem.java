@@ -8,6 +8,8 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.ActionResult;
 
+import static com.matthewperiut.hotkettles.util.HotKettleComponents.LIQUID_LEVEL_COMPONENT;
+
 public class KettleItem extends BlockItem {
     public int kettle_type = 0;
 
@@ -24,8 +26,8 @@ public class KettleItem extends BlockItem {
     public ActionResult place(ItemPlacementContext context) {
         ActionResult result = super.place(context);
         if (result == ActionResult.CONSUME) {
-            if (context.getStack().getNbt() != null && context.getStack().getNbt().contains("liquidLevel")) {
-                int liquidLevel = context.getStack().getNbt().getInt("liquidLevel");
+            if (context.getStack().contains(LIQUID_LEVEL_COMPONENT)) {
+                int liquidLevel = context.getStack().get(LIQUID_LEVEL_COMPONENT);
                 ((KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos())).setLiquidLevel(liquidLevel);
             } else {
                 if (kettle_type == 0) {
@@ -40,9 +42,8 @@ public class KettleItem extends BlockItem {
 
     @Override
     public int getItemBarStep(ItemStack stack) {
-        NbtCompound nbt = stack.getNbt();
-        if (nbt != null && nbt.contains("liquidLevel")) {
-            int liquidLevel = nbt.getInt("liquidLevel");
+        if (stack.contains(LIQUID_LEVEL_COMPONENT)) {
+            int liquidLevel = stack.get(LIQUID_LEVEL_COMPONENT);
             int result = (int) (liquidLevel * 2.6f);
             return result;
         }
@@ -56,9 +57,8 @@ public class KettleItem extends BlockItem {
 
     @Override
     public boolean isItemBarVisible(ItemStack stack) {
-        NbtCompound nbt = stack.getNbt();
-        if (nbt != null && nbt.contains("liquidLevel")) {
-            int liquidLevel = nbt.getInt("liquidLevel");
+        if (stack.contains(LIQUID_LEVEL_COMPONENT)) {
+            int liquidLevel = stack.get(LIQUID_LEVEL_COMPONENT);
             return liquidLevel != 5;
         }
         return false;

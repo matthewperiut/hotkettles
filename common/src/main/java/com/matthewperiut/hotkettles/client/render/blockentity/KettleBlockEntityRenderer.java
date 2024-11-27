@@ -43,7 +43,7 @@ public class KettleBlockEntityRenderer implements BlockEntityRenderer<KettleBloc
                     .texture(u, v)
                     .overlay(overlay)
                     .light(light)
-                    .normal(normalMatrix, 0.0f, 0.0f, 1.0f) // Flip normal for back face
+                    .normal(entry, 0.0f, 0.0f, 1.0f) // Flip normal for back face
                     .next();
         }
     }

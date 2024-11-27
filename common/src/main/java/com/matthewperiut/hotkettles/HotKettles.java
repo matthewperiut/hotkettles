@@ -6,7 +6,9 @@ import com.matthewperiut.hotkettles.blockentity.HotKettleBlockEntities;
 import com.matthewperiut.hotkettles.item.HotKettleFoodComponents;
 import com.matthewperiut.hotkettles.item.HotKettleItemGroups;
 import com.matthewperiut.hotkettles.item.HotKettleItems;
+import com.matthewperiut.hotkettles.util.HotKettleComponents;
 import dev.architectury.registry.registries.RegistrarManager;
+import net.minecraft.item.Items;
 
 import java.util.function.Supplier;
 
@@ -17,6 +19,7 @@ public class HotKettles {
     public static boolean hot_workaround;
 
     public static void init() {
+        HotKettleComponents.init();
         HotKettleFoodComponents.init();
         HotKettleBlocks.init();
         HotKettleItems.init();
