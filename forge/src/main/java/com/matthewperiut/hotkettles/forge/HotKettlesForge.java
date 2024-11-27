@@ -20,7 +20,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(HotKettles.MOD_ID)
 public class HotKettlesForge {
     public HotKettlesForge() {
-        // Submit our event bus to let architectury register our content on the right time
         EventBuses.registerModEventBus(HotKettles.MOD_ID, FMLJavaModLoadingContext.get().getModEventBus());
         HotKettles.init();
     }

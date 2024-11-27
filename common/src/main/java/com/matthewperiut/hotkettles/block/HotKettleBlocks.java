@@ -21,7 +21,7 @@ public class HotKettleBlocks {
     public static RegistrySupplier<Block> cup_of_milk = BLOCKS.register(new Identifier(MOD_ID, "cup_of_milk"), () -> new MugBlock(AbstractBlock.Settings.create().strength(0.5F).resistance(0.5F)));
     public static RegistrySupplier<Block> poison = BLOCKS.register(new Identifier(MOD_ID, "poison"), () -> new MugBlock(AbstractBlock.Settings.create().strength(0.5F).resistance(0.5F)));
     public static RegistrySupplier<Block> cup_of_water = BLOCKS.register(new Identifier(MOD_ID, "cup_of_water"), () -> new MugBlock(AbstractBlock.Settings.create().strength(0.5F).resistance(0.5F)));
-    public static RegistrySupplier<Block> cup_of_lava = BLOCKS.register(new Identifier(MOD_ID, "cup_of_lava"), () -> new MugBlock(AbstractBlock.Settings.create().strength(0.5F).resistance(0.5F)));
+    public static RegistrySupplier<Block> cup_of_lava = BLOCKS.register(new Identifier(MOD_ID, "cup_of_lava"), () -> new MugBlock(AbstractBlock.Settings.create().strength(0.5F).resistance(0.5F).luminance((state) -> 12)));
     public static RegistrySupplier<Block> hot_chocolate = BLOCKS.register(new Identifier(MOD_ID, "hot_chocolate"), () -> new MugBlock(AbstractBlock.Settings.create().strength(0.5F).resistance(0.5F)));
     public static RegistrySupplier<Block> latte = BLOCKS.register(new Identifier(MOD_ID, "latte"), () -> new MugBlock(AbstractBlock.Settings.create().strength(0.5F).resistance(0.5F)));
     public static RegistrySupplier<Block> mocha = BLOCKS.register(new Identifier(MOD_ID, "mocha"), () -> new MugBlock(AbstractBlock.Settings.create().strength(0.5F).resistance(0.5F)));
