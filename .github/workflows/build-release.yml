@@ -61,7 +61,7 @@ jobs:
 
           game-version-filter: releases # Defaults to selecting the latest compatible version of Minecraft, using the tag from the fabric.mod.json
 
-      - name: Upload forge artifacts
+      - name: Upload neoforge artifacts
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           modrinth-id: 7xIXdoHy
@@ -71,15 +71,15 @@ jobs:
           curseforge-id: 1148583
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
-          name: '[${{ steps.versions.outputs.minecraft-version }}] Forge ${{ steps.versions.outputs.mod-version }}'
-          version: 'forge-${{ steps.versions.outputs.minecraft-version }}-${{ steps.versions.outputs.mod-version }}'
+          name: '[${{ steps.versions.outputs.minecraft-version }}] NeoForge ${{ steps.versions.outputs.mod-version }}'
+          version: 'neoforge-${{ steps.versions.outputs.minecraft-version }}-${{ steps.versions.outputs.mod-version }}'
 
           files: |
-            forge/build/libs/!(*-@(sources|dev|dev-shadow|javadoc).jar)
+            neoforge/build/libs/!(*-@(sources|dev|dev-shadow|javadoc).jar)
 
           version-type: release
 
-          loaders: forge
+          loaders: neoforge
 
           dependencies: |
             architectury-api(required)
