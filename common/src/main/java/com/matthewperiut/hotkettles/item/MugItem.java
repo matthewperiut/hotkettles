@@ -12,10 +12,12 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
+import net.minecraft.registry.Registries;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -32,6 +34,11 @@ public class MugItem extends BlockItem {
     public MugItem(Block block, Settings settings, boolean hot) {
         super(block, settings);
         this.hot = hot;
+    }
+
+    @Override
+    public String getTranslationKey() {
+        return super.getTranslationKey() + (hot ? "_hot" : "");
     }
 
     @Override
