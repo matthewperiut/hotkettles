@@ -14,7 +14,7 @@ import org.joml.Matrix4f;
 
 public class KettleBlockEntityRenderer implements BlockEntityRenderer<KettleBlockEntity> {
     // Custom texture path
-    private static final Identifier LIQUIDS_TEXTURE = new Identifier("hotkettles", "textures/blockentity/liquids.png");
+    private static final Identifier LIQUIDS_TEXTURE = Identifier.of("hotkettles", "textures/blockentity/liquids.png");
 
     public KettleBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
     }
@@ -43,8 +43,7 @@ public class KettleBlockEntityRenderer implements BlockEntityRenderer<KettleBloc
                     .texture(u, v)
                     .overlay(overlay)
                     .light(light)
-                    .normal(entry, 0.0f, 0.0f, 1.0f) // Flip normal for back face
-                    .next();
+                    .normal(entry, 0.0f, 0.0f, 1.0f); // Flip normal for back face
         }
     }
 
