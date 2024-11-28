@@ -7,5 +7,7 @@
   "ingredient": {
     "item": "hotkettles:clay_mug"
   },
-  "result": "hotkettles:empty_mug"
+  "result": {
+    "id": "hotkettles:empty_mug"
+  }
 }
