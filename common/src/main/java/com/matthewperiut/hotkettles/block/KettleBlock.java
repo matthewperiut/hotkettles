@@ -55,7 +55,7 @@ public class KettleBlock extends BlockWithEntity {
     }
 
     @Override
-    public boolean isTransparent(BlockState state, BlockView world, BlockPos pos) {
+    protected boolean isTransparent(BlockState state) {
         return true;
     }
 
@@ -155,17 +155,17 @@ public class KettleBlock extends BlockWithEntity {
             if (!world.isClient) {
                 if (stack.isEmpty()) {
                     if (state.get(KETTLE_TYPE) == 0) {
-                        player.sendMessage(Text.of("Use water bucket, milk bucket, lava bucket, or cactus on kettle to fill."));
+                        player.sendMessage(Text.of("Use water bucket, milk bucket, lava bucket, or cactus on kettle to fill."), false);
                     }
                     else if (state.get(KETTLE_TYPE) == 2) {
-                        player.sendMessage(Text.of("Use cocoa beans or apple on the water kettle to brew new liquid."));
+                        player.sendMessage(Text.of("Use cocoa beans or apple on the water kettle to brew new liquid."), false);
                     }
                     else {
                         if (world.getBlockEntity(pos) instanceof KettleBlockEntity kettle) {
                             if (!kettle.hot()) {
-                                player.sendMessage(Text.of("Put fire, lava, or lit furnace under kettle to heat it up."));
+                                player.sendMessage(Text.of("Put fire, lava, or lit furnace under kettle to heat it up."), false);
                             } else {
-                                player.sendMessage(Text.of("Collect liquid with an empty mug."));
+                                player.sendMessage(Text.of("Collect liquid with an empty mug."), false);
                             }
                         }
                     }
@@ -190,7 +190,7 @@ public class KettleBlock extends BlockWithEntity {
             ((KettleBlockEntity)world.getBlockEntity(pos)).setLiquidLevel(5);
             ((KettleBlockEntity)world.getBlockEntity(pos)).setLiquidHorizontalOffset(nextKettleType*2);
         }
-        return ActionResult.success(world.isClient);
+        return ActionResult.SUCCESS;
     }
 
     static ActionResult takeKettleLiquid(World world, BlockPos pos, PlayerEntity player, ItemStack stack, BlockState state, SoundEvent soundEvent, Item replaced) {
@@ -203,7 +203,7 @@ public class KettleBlock extends BlockWithEntity {
             ((KettleBlockEntity)world.getBlockEntity(pos)).setLiquidHorizontalOffset(0);
 
         }
-        return ActionResult.success(world.isClient);
+        return ActionResult.SUCCESS;
     }
 
     @Override

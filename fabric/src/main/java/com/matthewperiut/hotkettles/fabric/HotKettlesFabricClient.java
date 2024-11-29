@@ -1,37 +1,31 @@
 package com.matthewperiut.hotkettles.fabric;
 
-import com.matthewperiut.hotkettles.HotKettles;
 import com.matthewperiut.hotkettles.HotKettlesClient;
 import com.matthewperiut.hotkettles.block.HotKettleBlocks;
-import com.matthewperiut.hotkettles.item.HotKettleItems;
-import dev.architectury.registry.registries.RegistrySupplier;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.item.Item;
-import net.minecraft.util.Identifier;
 
 
 public class HotKettlesFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         HotKettlesClient.init();
-        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.kettle.get(), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.KETTLE.get(), RenderLayer.getCutout());
 
-        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.empty_mug.get(), RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.apple_cider.get(), RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.bitter_water.get(), RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.cup_of_milk.get(), RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.poison.get(), RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.cup_of_water.get(), RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.cup_of_lava.get(), RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.hot_chocolate.get(), RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.latte.get(), RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.mocha.get(), RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.pumpkin_spice_latte.get(), RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.dandelion_tea.get(), RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.rose_tea.get(), RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.fairy_tea.get(), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.EMPTY_MUG.get(), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.APPLE_CIDER.get(), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.BITTER_WATER.get(), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.CUP_OF_MILK.get(), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.POISON.get(), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.CUP_OF_WATER.get(), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.CUP_OF_LAVA.get(), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.HOT_CHOCOLATE.get(), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.LATTE.get(), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.MOCHA.get(), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.PUMPKIN_SPICE_LATTE.get(), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.DANDELION_TEA.get(), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.ROSE_TEA.get(), RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.FAIRY_TEA.get(), RenderLayer.getCutout());
     }
 }

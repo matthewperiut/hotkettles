@@ -1,9 +1,7 @@
 package com.matthewperiut.hotkettles.block;
 
-import com.matthewperiut.hotkettles.item.HotKettleFoodComponents;
 import com.matthewperiut.hotkettles.item.HotKettleItems;
 import net.minecraft.block.*;
-import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -40,7 +38,7 @@ public class MugBlock extends Block {
     }
 
     @Override
-    public boolean isTransparent(BlockState state, BlockView world, BlockPos pos) {
+    protected boolean isTransparent(BlockState state) {
         return true;
     }
 
@@ -56,17 +54,17 @@ public class MugBlock extends Block {
         boolean hot = state.get(HOT);
         ItemStack stack = new ItemStack(state.getBlock().asItem());
         if (!hot) {
-            if (stack.getItem().equals(HotKettleItems.hot_water.get())) {
-                stack = new ItemStack(HotKettleItems.cup_of_water.get());
+            if (stack.getItem().equals(HotKettleItems.HOT_WATER.get())) {
+                stack = new ItemStack(HotKettleItems.CUP_OF_WATER.get());
             }
-            if (stack.getItem().equals(HotKettleItems.hot_cider.get())) {
-                stack = new ItemStack(HotKettleItems.apple_cider.get());
+            if (stack.getItem().equals(HotKettleItems.HOT_CIDER.get())) {
+                stack = new ItemStack(HotKettleItems.APPLE_CIDER.get());
             }
-            if (stack.getItem().equals(HotKettleItems.hot_cocoa.get())) {
-                stack = new ItemStack(HotKettleItems.bitter_water.get());
+            if (stack.getItem().equals(HotKettleItems.HOT_COCOA.get())) {
+                stack = new ItemStack(HotKettleItems.BITTER_WATER.get());
             }
-            if (stack.getItem().equals(HotKettleItems.steamed_milk.get())) {
-                stack = new ItemStack(HotKettleItems.cup_of_milk.get());
+            if (stack.getItem().equals(HotKettleItems.STEAMED_MILK.get())) {
+                stack = new ItemStack(HotKettleItems.CUP_OF_MILK.get());
             }
         }
         world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, stack));

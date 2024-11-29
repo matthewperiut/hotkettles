@@ -25,22 +25,22 @@ public class HotKettlesNeoForge {
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             HotKettlesClient.init();
-            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.kettle.get());
+            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.KETTLE.get());
 
-            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.empty_mug.get());
-            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.apple_cider.get());
-            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.bitter_water.get());
-            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.cup_of_milk.get());
-            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.poison.get());
-            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.cup_of_water.get());
-            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.cup_of_lava.get());
-            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.hot_chocolate.get());
-            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.latte.get());
-            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.mocha.get());
-            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.pumpkin_spice_latte.get());
-            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.dandelion_tea.get());
-            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.rose_tea.get());
-            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.fairy_tea.get());
+            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.EMPTY_MUG.get());
+            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.APPLE_CIDER.get());
+            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.BITTER_WATER.get());
+            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.CUP_OF_MILK.get());
+            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.POISON.get());
+            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.CUP_OF_WATER.get());
+            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.CUP_OF_LAVA.get());
+            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.HOT_CHOCOLATE.get());
+            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.LATTE.get());
+            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.MOCHA.get());
+            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.PUMPKIN_SPICE_LATTE.get());
+            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.DANDELION_TEA.get());
+            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.ROSE_TEA.get());
+            RenderTypeRegistry.register(RenderLayer.getCutout(), HotKettleBlocks.FAIRY_TEA.get());
         }
     }
 }

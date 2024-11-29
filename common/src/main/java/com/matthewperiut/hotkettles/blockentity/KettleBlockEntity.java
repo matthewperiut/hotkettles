@@ -6,7 +6,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -80,44 +79,44 @@ public class KettleBlockEntity extends BlockEntity {
             case 0:
                 return null;
             case 1:
-                return new ItemStack(HotKettleItems.poison.get());
+                return new ItemStack(HotKettleItems.POISON.get());
             case 2:
                 if (hot()) {
-                    return new ItemStack(HotKettleItems.hot_water.get());
+                    return new ItemStack(HotKettleItems.HOT_WATER.get());
                 } else {
                     player.sendMessage(Text.of("You can make this drink hot by putting lava, torch, or lit furnace underneath kettle"), true);
-                    return new ItemStack(HotKettleItems.cup_of_water.get());
+                    return new ItemStack(HotKettleItems.CUP_OF_WATER.get());
                 }
             case 3:
                 if (hot()) {
-                    return new ItemStack(HotKettleItems.steamed_milk.get());
+                    return new ItemStack(HotKettleItems.STEAMED_MILK.get());
                 } else {
                     player.sendMessage(Text.of("You can make this drink hot by putting lava, torch, or lit furnace underneath kettle"), true);
-                    return new ItemStack(HotKettleItems.cup_of_milk.get());
+                    return new ItemStack(HotKettleItems.CUP_OF_MILK.get());
                 }
             case 4:
                 if (hot()) {
-                    return new ItemStack(HotKettleItems.hot_cocoa.get());
+                    return new ItemStack(HotKettleItems.HOT_COCOA.get());
                 } else {
                     player.sendMessage(Text.of("You can make this drink hot by putting lava, torch, or lit furnace underneath kettle"), true);
-                    return new ItemStack(HotKettleItems.bitter_water.get());
+                    return new ItemStack(HotKettleItems.BITTER_WATER.get());
                 }
             case 5:
                 if (hot()) {
-                    return new ItemStack(HotKettleItems.hot_cider.get());
+                    return new ItemStack(HotKettleItems.HOT_CIDER.get());
                 } else {
                     player.sendMessage(Text.of("You can make this drink hot by putting lava, torch, or lit furnace underneath kettle"), true);
-                    return new ItemStack(HotKettleItems.apple_cider.get());
+                    return new ItemStack(HotKettleItems.APPLE_CIDER.get());
                 }
             case 6:
-                return new ItemStack(HotKettleItems.cup_of_lava.get());
+                return new ItemStack(HotKettleItems.CUP_OF_LAVA.get());
         }
 
         return null;
     }
 
     public KettleBlockEntity(BlockPos pos, BlockState state) {
-        super(HotKettleBlockEntities.kettle_block_entity_type.get(), pos, state);
+        super(HotKettleBlockEntities.KETTLE_BLOCK_ENTITY_TYPE, pos, state);
         Direction dir = state.get(Properties.HORIZONTAL_FACING);
         if (dir == Direction.EAST || dir == Direction.WEST) {
             dirX = true;

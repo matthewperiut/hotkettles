@@ -6,8 +6,10 @@ import net.minecraft.block.Block;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.Registries;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 
+import static com.matthewperiut.hotkettles.block.KettleBlock.KETTLE_TYPE;
 import static com.matthewperiut.hotkettles.util.HotKettleComponents.LIQUID_LEVEL_COMPONENT;
 
 public class KettleItem extends BlockItem {
@@ -19,24 +21,30 @@ public class KettleItem extends BlockItem {
     }
 
     @Override
-    public String getTranslationKey() {
-        return "block." + Registries.ITEM.getId(this).toString().replace(":", ".");
+    public Text getName(ItemStack stack) {
+        return Text.translatable("block." + Registries.ITEM.getId(this).toString().replace(":", "."));
     }
 
     public ActionResult place(ItemPlacementContext context) {
         ActionResult result = super.place(context);
-        if (result == ActionResult.CONSUME) {
+        System.out.println(result);
+        if (result == ActionResult.SUCCESS) {
+
             if (context.getStack().contains(LIQUID_LEVEL_COMPONENT.get())) {
                 int liquidLevel = context.getStack().get(LIQUID_LEVEL_COMPONENT.get());
                 ((KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos())).setLiquidLevel(liquidLevel);
+                System.out.println(1);
             } else {
-                if (kettle_type == 0) {
+                if (context.getWorld().getBlockState(context.getBlockPos()).get(KETTLE_TYPE) == 0) {
                     ((KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos())).setLiquidLevel(0);
+                    System.out.println(2);
                 } else {
                     ((KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos())).setLiquidLevel(5);
+                    System.out.println(3);
                 }
             }
         }
+
         return result;
     }
 

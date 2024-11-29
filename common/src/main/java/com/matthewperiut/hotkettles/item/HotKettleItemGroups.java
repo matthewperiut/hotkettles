@@ -16,7 +16,7 @@ public class HotKettleItemGroups {
     public static final Registrar<ItemGroup> TABS = MANAGER.get().get(Registries.ITEM_GROUP);
     public static final RegistrySupplier<ItemGroup> KETTLE_TAB = TABS.register(Identifier.of(MOD_ID, "kettle_tab"), () ->
             CreativeTabRegistry.create(Text.translatable("tab.hotkettles.kettle"),
-                    () -> new ItemStack(HotKettleItems.kettle.get())));
+                    () -> new ItemStack(HotKettleItems.KETTLE.get())));
 
     public static void init() {
 
