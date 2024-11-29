@@ -46,15 +46,6 @@ public class MugItem extends BlockItem {
         return result;
     }
 
-    @Override
-    public ActionResult use(World world, PlayerEntity user, Hand hand) {
-        Set<RegistryKey<BlockEntityType<?>>> a = Registries.BLOCK_ENTITY_TYPE.getKeys();
-        a.forEach((b) -> {
-            System.out.println(b.getValue());
-        });
-        return super.use(world, user, hand);
-    }
-
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         super.finishUsing(stack, world, user);
         if (user instanceof ServerPlayerEntity serverPlayerEntity) {

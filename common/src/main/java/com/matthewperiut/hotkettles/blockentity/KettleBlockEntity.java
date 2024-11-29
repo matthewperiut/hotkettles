@@ -49,7 +49,9 @@ public class KettleBlockEntity extends BlockEntity {
         return block == Blocks.LAVA || block == Blocks.LAVA_CAULDRON || block == Blocks.FIRE
                 || block == Blocks.SOUL_FIRE || block == Blocks.TORCH || block == Blocks.SOUL_TORCH
                 || (block == Blocks.FURNACE && getWorld().getBlockState(pos.down()).get(Properties.LIT))
-                || (block == Blocks.BLAST_FURNACE && getWorld().getBlockState(pos.down()).get(Properties.LIT));
+                || (block == Blocks.BLAST_FURNACE && getWorld().getBlockState(pos.down()).get(Properties.LIT))
+                || (block == Blocks.CAMPFIRE && getWorld().getBlockState(pos.down()).get(Properties.LIT))
+                || (block == Blocks.SOUL_CAMPFIRE && getWorld().getBlockState(pos.down()).get(Properties.LIT));
     }
 
     public ItemStack takeLiquid(PlayerEntity player) {
