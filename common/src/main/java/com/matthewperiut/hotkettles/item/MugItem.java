@@ -6,15 +6,19 @@ import com.matthewperiut.hotkettles.blockentity.KettleBlockEntity;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.stat.Stats;
-import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.world.World;
+
+import java.util.Set;
 
 public class MugItem extends BlockItem {
 
@@ -40,6 +44,15 @@ public class MugItem extends BlockItem {
             }
         }
         return result;
+    }
+
+    @Override
+    public ActionResult use(World world, PlayerEntity user, Hand hand) {
+        Set<RegistryKey<BlockEntityType<?>>> a = Registries.BLOCK_ENTITY_TYPE.getKeys();
+        a.forEach((b) -> {
+            System.out.println(b.getValue());
+        });
+        return super.use(world, user, hand);
     }
 
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {

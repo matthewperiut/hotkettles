@@ -10,7 +10,6 @@ import static com.matthewperiut.hotkettles.HotKettles.MOD_ID;
 public class HotKettleBlockEntities {
 //    public static final Registrar<BlockEntityType<?>> BLOCK_ENTITY_TYPES = MANAGER.get().get(Registries.BLOCK_ENTITY_TYPE);
 
-    public static final BlockEntityType<KettleBlockEntity> KETTLE_BLOCK_ENTITY_TYPE = BlockEntityTypeAccessor.create(Identifier.of(MOD_ID, "kettle").toString(), KettleBlockEntity::new, HotKettleBlocks.KETTLE.get());
 
     public static void init() {
 

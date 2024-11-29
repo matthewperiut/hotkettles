@@ -2,6 +2,9 @@ package com.matthewperiut.hotkettles.fabric;
 
 import com.matthewperiut.hotkettles.HotKettlesClient;
 import com.matthewperiut.hotkettles.block.HotKettleBlocks;
+import com.matthewperiut.hotkettles.blockentity.HotKettleBlockEntities;
+import com.matthewperiut.hotkettles.client.render.blockentity.KettleBlockEntityRenderer;
+import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;
@@ -11,6 +14,7 @@ public class HotKettlesFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         HotKettlesClient.init();
+        BlockEntityRendererRegistry.register(HotKettleBlockEntityTypes.KETTLE_BLOCK_ENTITY_TYPE, KettleBlockEntityRenderer::new);
         BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.KETTLE.get(), RenderLayer.getCutout());
 
         BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.EMPTY_MUG.get(), RenderLayer.getCutout());

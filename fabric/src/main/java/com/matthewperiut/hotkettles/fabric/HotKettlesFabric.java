@@ -9,5 +9,6 @@ public class HotKettlesFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         HotKettles.init();
+        HotKettleBlockEntityTypes.init();
     }
 }

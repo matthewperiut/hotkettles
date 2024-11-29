@@ -1,20 +1,24 @@
 package com.matthewperiut.hotkettles.blockentity;
 
+import com.matthewperiut.hotkettles.HotKettles;
 import com.matthewperiut.hotkettles.block.KettleBlock;
 import com.matthewperiut.hotkettles.item.HotKettleItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
@@ -116,7 +120,7 @@ public class KettleBlockEntity extends BlockEntity {
     }
 
     public KettleBlockEntity(BlockPos pos, BlockState state) {
-        super(HotKettleBlockEntities.KETTLE_BLOCK_ENTITY_TYPE, pos, state);
+        super(Registries.BLOCK_ENTITY_TYPE.get(Identifier.of(HotKettles.MOD_ID, "kettle")), pos, state);
         Direction dir = state.get(Properties.HORIZONTAL_FACING);
         if (dir == Direction.EAST || dir == Direction.WEST) {
             dirX = true;
