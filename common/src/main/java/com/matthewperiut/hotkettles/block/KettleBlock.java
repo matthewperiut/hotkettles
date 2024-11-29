@@ -30,7 +30,7 @@ import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
-import static com.matthewperiut.hotkettles.util.HotKettleComponents.LIQUID_LEVEL_COMPONENT;
+import static com.matthewperiut.hotkettles.components.HotKettleComponents.LIQUID_LEVEL_COMPONENT;
 
 public class KettleBlock extends BlockWithEntity {
     public static final IntProperty KETTLE_TYPE = IntProperty.of("kettle_type", 0, 6);

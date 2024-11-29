@@ -1,4 +1,4 @@
-package com.matthewperiut.hotkettles.util;
+package com.matthewperiut.hotkettles.components;
 
 import com.mojang.serialization.Codec;
 import dev.architectury.registry.registries.Registrar;

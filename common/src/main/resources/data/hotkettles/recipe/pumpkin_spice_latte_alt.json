@@ -2,18 +2,10 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "hotkettles:hot_cocoa"
-    },
-    {
-      "item": "minecraft:sugar"
-    },
-    {
-      "item": "minecraft:milk_bucket"
-    },
-    {
-      "item": "minecraft:carved_pumpkin"
-    }
+    "hotkettles:hot_cocoa",
+    "minecraft:sugar",
+    "minecraft:milk_bucket",
+    "minecraft:carved_pumpkin"
   ],
   "result": {
     "id": "hotkettles:pumpkin_spice_latte"

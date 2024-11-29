@@ -2,14 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "hotkettles:hot_water"
-    },
-    {
-      "item": "minecraft:dandelion"
-    }
+      "hotkettles:hot_water",
+      "minecraft:dandelion"
   ],
   "result": {
+    "count": 1,
     "id": "hotkettles:dandelion_tea"
   }
 }

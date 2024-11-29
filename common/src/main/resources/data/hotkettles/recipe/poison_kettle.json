@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "X": {
-      "item": "minecraft:iron_ingot"
-    },
-    "C": {
-      "item": "minecraft:cactus"
-    }
+    "X": "minecraft:iron_ingot",
+    "C": "minecraft:cactus"
   },
   "pattern": [
     " X ",

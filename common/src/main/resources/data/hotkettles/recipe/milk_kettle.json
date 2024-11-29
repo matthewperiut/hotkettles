@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "X": {
-      "item": "minecraft:iron_ingot"
-    },
-    "M": {
-      "item": "minecraft:milk_bucket"
-    }
+    "X": "minecraft:iron_ingot",
+    "M": "minecraft:milk_bucket"
   },
   "pattern": [
     " X ",

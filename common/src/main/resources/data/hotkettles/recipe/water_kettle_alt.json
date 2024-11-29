@@ -2,14 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "hotkettles:kettle"
-    },
-    {
-      "item": "minecraft:water_bucket"
-    }
+      "hotkettles:kettle",
+      "minecraft:water_bucket"
   ],
   "result": {
-    "id": "hotkettles:water_kettlze"
+    "count": 1,
+    "id": "hotkettles:water_kettle"
   }
 }

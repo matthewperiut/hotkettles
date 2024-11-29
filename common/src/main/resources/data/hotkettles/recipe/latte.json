@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "hotkettles:hot_cocoa"
-    },
-    {
-      "item": "minecraft:milk_bucket"
-    }
+      "hotkettles:hot_cocoa",
+      "minecraft:milk_bucket"
   ],
   "result": {
     "id": "hotkettles:latte"

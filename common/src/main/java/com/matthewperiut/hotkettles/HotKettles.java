@@ -3,11 +3,11 @@ package com.matthewperiut.hotkettles;
 import com.google.common.base.Suppliers;
 import com.matthewperiut.hotkettles.block.HotKettleBlocks;
 import com.matthewperiut.hotkettles.blockentity.HotKettleBlockEntities;
-import com.matthewperiut.hotkettles.edible.HotKettleFoodComponents;
-import com.matthewperiut.hotkettles.edible.HotKettlesConsumableComponents;
+import com.matthewperiut.hotkettles.components.HotKettleFoodComponents;
+import com.matthewperiut.hotkettles.components.HotKettlesConsumableComponents;
 import com.matthewperiut.hotkettles.item.HotKettleItemGroups;
 import com.matthewperiut.hotkettles.item.HotKettleItems;
-import com.matthewperiut.hotkettles.util.HotKettleComponents;
+import com.matthewperiut.hotkettles.components.HotKettleComponents;
 import dev.architectury.registry.registries.RegistrarManager;
 
 import java.util.function.Supplier;

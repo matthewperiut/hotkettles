@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 0.7,
   "group": "iron_ingot",
-  "ingredient": {
-    "item": "hotkettles:clay_mug"
-  },
+  "ingredient": "hotkettles:clay_mug",
   "result": {
     "id": "hotkettles:empty_mug"
   }
