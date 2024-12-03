@@ -25,7 +25,7 @@ public class KettleItem extends BlockItem {
 
     public ActionResult place(ItemPlacementContext context) {
         ActionResult result = super.place(context);
-        if (result == ActionResult.SUCCESS) {
+        if (result == ActionResult.CONSUME) {
             if (context.getStack().contains(LIQUID_LEVEL_COMPONENT.get())) {
                 int liquidLevel = context.getStack().get(LIQUID_LEVEL_COMPONENT.get());
                 ((KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos())).setLiquidLevel(liquidLevel);

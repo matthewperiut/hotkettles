@@ -34,7 +34,7 @@ public class MugItem extends BlockItem {
 
     public ActionResult place(ItemPlacementContext context) {
         ActionResult result = super.place(context);
-        if (result == ActionResult.SUCCESS) {
+        if (result == ActionResult.CONSUME) {
             if (hot) {
                 context.getWorld().setBlockState(
                         context.getBlockPos(),

@@ -2,12 +2,17 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-      "hotkettles:bitter_water",
-      "minecraft:sugar",
-      "minecraft:milk_bucket"
+    {
+      "item": "hotkettles:bitter_water"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    }
   ],
   "result": {
-    "count": 1,
     "id": "hotkettles:mocha"
   }
 }
