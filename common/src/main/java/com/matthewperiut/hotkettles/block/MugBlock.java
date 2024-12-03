@@ -49,7 +49,7 @@ public class MugBlock extends Block {
         return SHAPE;
     }
     @Override
-    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+    public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         boolean hot = state.get(HOT);
         ItemStack stack = new ItemStack(state.getBlock().asItem());
         if (!hot) {
@@ -67,6 +67,6 @@ public class MugBlock extends Block {
             }
         }
         world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, stack));
-        super.onBreak(world, pos, state, player);
+        return super.onBreak(world, pos, state, player);
     }
 }

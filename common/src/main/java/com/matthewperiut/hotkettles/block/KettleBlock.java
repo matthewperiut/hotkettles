@@ -49,6 +49,11 @@ public class KettleBlock extends BlockWithEntity {
     }
 
     @Override
+    protected MapCodec<? extends BlockWithEntity> getCodec() {
+        return createCodec(KettleBlock::new);
+    }
+
+    @Override
     public boolean isTransparent(BlockState state, BlockView world, BlockPos pos) {
         return true;
     }
@@ -91,7 +96,7 @@ public class KettleBlock extends BlockWithEntity {
     }
 
     @Override
-    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+    public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         int state_type = state.get(KETTLE_TYPE);
         for (RegistrySupplier<Item> kettle : HotKettleItems.kettles) {
             if (kettle.get() instanceof KettleItem k) {
@@ -100,11 +105,11 @@ public class KettleBlock extends BlockWithEntity {
                     NbtCompound nbt = stack.getOrCreateNbt();
                     nbt.putInt("liquidLevel", ((KettleBlockEntity) world.getBlockEntity(pos)).liquidLevel);
                     world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, stack));
-                    return;
+                    return super.onBreak(world, pos, state, player);
                 }
             }
         }
-        super.onBreak(world, pos, state, player);
+        return super.onBreak(world, pos, state, player);
     }
 
     @Override
@@ -202,7 +207,7 @@ public class KettleBlock extends BlockWithEntity {
     }
 
     @Override
-    public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+    public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
         int state_type = state.get(KETTLE_TYPE);
         for (RegistrySupplier<Item> kettle : HotKettleItems.kettles) {
             if (kettle.get() instanceof KettleItem k) {
