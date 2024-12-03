@@ -30,10 +30,13 @@ public class HotKettlesNeoForge {
 
     public static final Supplier<BlockEntityType<KettleBlockEntity>> KETTLE_BLOCK_ENTITY_TYPE = BLOCK_ENTITY_TYPES.register(
             "kettle",
-            () -> new BlockEntityType<>(
-                    KettleBlockEntity::new,
-                    HotKettleBlocks.KETTLE.get()
-            )
+            // The block entity type, created using a builder.
+            () -> BlockEntityType.Builder.create(
+                            KettleBlockEntity::new,
+                            HotKettleBlocks.KETTLE.get()
+                    )
+                    // Build using null; vanilla does some datafixer shenanigans with the parameter that we don't need.
+                    .build(null)
     );
 
     public HotKettlesNeoForge(IEventBus modEventBus) {
