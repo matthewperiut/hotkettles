@@ -37,7 +37,7 @@ public class HotKettleItems {
     // continue block item pattern for the rest, all below will have .useBlockPrefixedTranslationKey
     public static final Identifier HOT_CIDER_ID = Identifier.of(MOD_ID, "hot_cider");
     public static final RegistryKey<Item> HOT_CIDER_KEY = RegistryKey.of(RegistryKeys.ITEM, HOT_CIDER_ID);
-    public static final RegistrySupplier<Item> HOT_CIDER = ITEMS.register(HOT_CIDER_ID, () -> new MugItem(HotKettleBlocks.APPLE_CIDER.get(), new Item.Settings().food(HotKettleFoodComponents.ALWAYS_CONSUMABLE, HotKettlesConsumableComponents.HOT_CIDER).arch$tab(KETTLE_TAB).registryKey(HOT_CIDER_KEY).translationKey("block.hotkettles.apple_cider_hot")));
+    public static final RegistrySupplier<Item> HOT_CIDER = ITEMS.register(HOT_CIDER_ID, () -> new MugItem(HotKettleBlocks.APPLE_CIDER.get(), new Item.Settings().food(HotKettleFoodComponents.ALWAYS_CONSUMABLE, HotKettlesConsumableComponents.HOT_CIDER).arch$tab(KETTLE_TAB).registryKey(HOT_CIDER_KEY).translationKey("block.hotkettles.apple_cider_hot"), true));
 
     public static final Identifier BITTER_WATER_ID = Identifier.of(MOD_ID, "bitter_water");
     public static final RegistryKey<Item> BITTER_WATER_KEY = RegistryKey.of(RegistryKeys.ITEM, BITTER_WATER_ID);
@@ -45,7 +45,7 @@ public class HotKettleItems {
 
     public static final Identifier HOT_COCOA_ID = Identifier.of(MOD_ID, "hot_cocoa");
     public static final RegistryKey<Item> HOT_COCOA_KEY = RegistryKey.of(RegistryKeys.ITEM, HOT_COCOA_ID);
-    public static final RegistrySupplier<Item> HOT_COCOA = ITEMS.register(HOT_COCOA_ID, () -> new MugItem(HotKettleBlocks.BITTER_WATER.get(), new Item.Settings().food(HotKettleFoodComponents.ALWAYS_CONSUMABLE, HotKettlesConsumableComponents.HOT_COCOA).arch$tab(KETTLE_TAB).registryKey(HOT_COCOA_KEY).translationKey("block.hotkettles.bitter_water_hot")));
+    public static final RegistrySupplier<Item> HOT_COCOA = ITEMS.register(HOT_COCOA_ID, () -> new MugItem(HotKettleBlocks.BITTER_WATER.get(), new Item.Settings().food(HotKettleFoodComponents.ALWAYS_CONSUMABLE, HotKettlesConsumableComponents.HOT_COCOA).arch$tab(KETTLE_TAB).registryKey(HOT_COCOA_KEY).translationKey("block.hotkettles.bitter_water_hot"), true));
 
     public static final Identifier CUP_OF_MILK_ID = Identifier.of(MOD_ID, "cup_of_milk");
     public static final RegistryKey<Item> CUP_OF_MILK_KEY = RegistryKey.of(RegistryKeys.ITEM, CUP_OF_MILK_ID);
@@ -53,7 +53,7 @@ public class HotKettleItems {
 
     public static final Identifier STEAMED_MILK_ID = Identifier.of(MOD_ID, "steamed_milk");
     public static final RegistryKey<Item> STEAMED_MILK_KEY = RegistryKey.of(RegistryKeys.ITEM, STEAMED_MILK_ID);
-    public static final RegistrySupplier<Item> STEAMED_MILK = ITEMS.register(STEAMED_MILK_ID, () -> new MugItem(HotKettleBlocks.CUP_OF_MILK.get(), new Item.Settings().food(HotKettleFoodComponents.ALWAYS_CONSUMABLE, HotKettlesConsumableComponents.STEAMED_MILK).arch$tab(KETTLE_TAB).registryKey(STEAMED_MILK_KEY).translationKey("block.hotkettles.cup_of_milk_hot")));
+    public static final RegistrySupplier<Item> STEAMED_MILK = ITEMS.register(STEAMED_MILK_ID, () -> new MugItem(HotKettleBlocks.CUP_OF_MILK.get(), new Item.Settings().food(HotKettleFoodComponents.ALWAYS_CONSUMABLE, HotKettlesConsumableComponents.STEAMED_MILK).arch$tab(KETTLE_TAB).registryKey(STEAMED_MILK_KEY).translationKey("block.hotkettles.cup_of_milk_hot"), true));
 
     public static final Identifier POISON_ID = Identifier.of(MOD_ID, "poison");
     public static final RegistryKey<Item> POISON_KEY = RegistryKey.of(RegistryKeys.ITEM, POISON_ID);
@@ -65,7 +65,7 @@ public class HotKettleItems {
 
     public static final Identifier HOT_WATER_ID = Identifier.of(MOD_ID, "hot_water");
     public static final RegistryKey<Item> HOT_WATER_KEY = RegistryKey.of(RegistryKeys.ITEM, HOT_WATER_ID);
-    public static final RegistrySupplier<Item> HOT_WATER = ITEMS.register(HOT_WATER_ID, () -> new MugItem(HotKettleBlocks.CUP_OF_WATER.get(), new Item.Settings().food(HotKettleFoodComponents.ALWAYS_CONSUMABLE, HotKettlesConsumableComponents.HOT_WATER).arch$tab(KETTLE_TAB).registryKey(HOT_WATER_KEY).translationKey("block.hotkettles.cup_of_water_hot")));
+    public static final RegistrySupplier<Item> HOT_WATER = ITEMS.register(HOT_WATER_ID, () -> new MugItem(HotKettleBlocks.CUP_OF_WATER.get(), new Item.Settings().food(HotKettleFoodComponents.ALWAYS_CONSUMABLE, HotKettlesConsumableComponents.HOT_WATER).arch$tab(KETTLE_TAB).registryKey(HOT_WATER_KEY).translationKey("block.hotkettles.cup_of_water_hot"), true));
 
     public static final Identifier CUP_OF_LAVA_ID = Identifier.of(MOD_ID, "cup_of_lava");
     public static final RegistryKey<Item> CUP_OF_LAVA_KEY = RegistryKey.of(RegistryKeys.ITEM, CUP_OF_LAVA_ID);
