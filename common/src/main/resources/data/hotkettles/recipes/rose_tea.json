@@ -2,11 +2,14 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-      "hotkettles:hot_water",
-      "minecraft:rose_bush"
+    {
+      "item": "hotkettles:hot_water"
+    },
+    {
+      "item": "minecraft:rose_bush"
+    }
   ],
   "result": {
-    "count": 1,
     "id": "hotkettles:rose_tea"
   }
 }

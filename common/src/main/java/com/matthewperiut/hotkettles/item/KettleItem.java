@@ -25,19 +25,18 @@ public class KettleItem extends BlockItem {
 
     public ActionResult place(ItemPlacementContext context) {
         ActionResult result = super.place(context);
-        if (result == ActionResult.SUCCESS) {
+        if (result == ActionResult.CONSUME) {
             if (context.getStack().contains(LIQUID_LEVEL_COMPONENT.get())) {
                 int liquidLevel = context.getStack().get(LIQUID_LEVEL_COMPONENT.get());
                 ((KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos())).setLiquidLevel(liquidLevel);
             } else {
-                if (context.getWorld().getBlockState(context.getBlockPos()).get(KETTLE_TYPE) == 0) {
+                if (kettle_type == 0) {
                     ((KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos())).setLiquidLevel(0);
                 } else {
                     ((KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos())).setLiquidLevel(5);
                 }
             }
         }
-
         return result;
     }
 

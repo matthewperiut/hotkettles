@@ -38,7 +38,7 @@ public class MugBlock extends Block {
     }
 
     @Override
-    protected boolean isTransparent(BlockState state) {
+    public boolean isTransparent(BlockState state, BlockView world, BlockPos pos) {
         return true;
     }
 

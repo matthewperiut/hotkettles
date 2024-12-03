@@ -32,9 +32,18 @@ public class MugItem extends BlockItem {
         this.hot = hot;
     }
 
+    @Override
+    public String getTranslationKey(ItemStack stack) {
+        if (hot) {
+            return super.getTranslationKey() + "_hot";
+        } else {
+            return super.getTranslationKey();
+        }
+    }
+
     public ActionResult place(ItemPlacementContext context) {
         ActionResult result = super.place(context);
-        if (result == ActionResult.SUCCESS) {
+        if (result == ActionResult.CONSUME) {
             if (hot) {
                 context.getWorld().setBlockState(
                         context.getBlockPos(),

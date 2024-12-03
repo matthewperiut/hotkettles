@@ -2,16 +2,20 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "X": "minecraft:iron_ingot",
-    "W": "minecraft:water_bucket"
+    "X": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "minecraft:cactus"
+    }
   },
   "pattern": [
     " X ",
-    "XWX",
+    "XCX",
     "XXX"
   ],
   "result": {
     "count": 1,
-    "id": "hotkettles:water_kettle"
+    "id": "hotkettles:poison_kettle"
   }
 }

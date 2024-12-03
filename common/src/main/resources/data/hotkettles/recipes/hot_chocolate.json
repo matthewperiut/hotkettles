@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "hotkettles:hot_cocoa",
-    "minecraft:sugar"
+    {
+      "item": "hotkettles:hot_cocoa"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
   ],
   "result": {
     "id": "hotkettles:hot_chocolate"
