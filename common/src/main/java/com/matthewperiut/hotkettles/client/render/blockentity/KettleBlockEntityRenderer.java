@@ -43,7 +43,8 @@ public class KettleBlockEntityRenderer implements BlockEntityRenderer<KettleBloc
                     .texture(u, v)
                     .overlay(overlay)
                     .light(light)
-                    .normal(entry, 0.0f, 0.0f, 1.0f); // Flip normal for back face
+                    .normal(normalMatrix, 0.0f, 0.0f, 1.0f) // Flip normal for back face
+                    .next();
         }
     }
 
@@ -90,7 +91,7 @@ public class KettleBlockEntityRenderer implements BlockEntityRenderer<KettleBloc
             drawer.drawPoint(0.4375F, -(8 / 16.f),  1 - (3 / 16.f) + Z_FIGHT_OFFSET, (TEXTURE_WIDTH + uv_x_offset) / 64.F, uv_y_offset / 32.F); // Top-right UV
             drawer.drawPoint(0.4375F, -(13 / 16.f), 1 - (3 / 16.f) + Z_FIGHT_OFFSET, (TEXTURE_WIDTH + uv_x_offset) / 64.F, (TEXTURE_HEIGHT + uv_y_offset) / 32.F); // Bottom-right UV
         }
-        
+
         matrices.pop();
     }
 }

@@ -13,7 +13,6 @@ public class HotKettlesFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         HotKettlesClient.init();
-        BlockEntityRendererRegistry.register(HotKettlesFabric.KETTLE_BLOCK_ENTITY_TYPE, KettleBlockEntityRenderer::new);
         BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.KETTLE.get(), RenderLayer.getCutout());
 
         BlockRenderLayerMap.INSTANCE.putBlock(HotKettleBlocks.EMPTY_MUG.get(), RenderLayer.getCutout());

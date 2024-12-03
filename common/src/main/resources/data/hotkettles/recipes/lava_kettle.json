@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "X":  "minecraft:iron_ingot",
-    "L": "minecraft:lava_bucket"
+    "X": {
+      "item": "minecraft:iron_ingot"
+    },
+    "L": {
+      "item": "minecraft:lava_bucket"
+    }
   },
   "pattern": [
     " X ",
@@ -12,6 +16,6 @@
   ],
   "result": {
     "count": 1,
-    "id": "hotkettles:lava_kettle"
+    "item": "hotkettles:lava_kettle"
   }
 }

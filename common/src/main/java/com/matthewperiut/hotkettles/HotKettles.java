@@ -2,6 +2,7 @@ package com.matthewperiut.hotkettles;
 
 import com.google.common.base.Suppliers;
 import com.matthewperiut.hotkettles.block.HotKettleBlocks;
+import com.matthewperiut.hotkettles.blockentity.HotKettleBlockEntities;
 import com.matthewperiut.hotkettles.components.HotKettleFoodComponents;
 import com.matthewperiut.hotkettles.components.HotKettlesConsumableComponents;
 import com.matthewperiut.hotkettles.item.HotKettleItemGroups;
@@ -18,11 +19,12 @@ public class HotKettles {
     public static boolean hot_workaround;
 
     public static void init() {
-        HotKettlesConsumableComponents.init();
+//        HotKettlesConsumableComponents.init();
         HotKettleComponents.init();
         HotKettleBlocks.init();
         HotKettleItems.init();
         HotKettleFoodComponents.init();
+        HotKettleBlockEntities.init();
         HotKettleItemGroups.init();
     }
 }

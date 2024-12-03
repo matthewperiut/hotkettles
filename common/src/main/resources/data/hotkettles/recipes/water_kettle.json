@@ -2,8 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "X": "minecraft:iron_ingot",
-    "W": "minecraft:water_bucket"
+    "X": {
+      "item": "minecraft:iron_ingot"
+    },
+    "W": {
+      "item": "minecraft:water_bucket"
+    }
   },
   "pattern": [
     " X ",
@@ -12,6 +16,6 @@
   ],
   "result": {
     "count": 1,
-    "id": "hotkettles:water_kettle"
+    "item": "hotkettles:water_kettle"
   }
 }

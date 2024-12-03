@@ -11,7 +11,6 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class HotKettlesFabric implements ModInitializer {
-    public static final BlockEntityType<KettleBlockEntity> KETTLE_BLOCK_ENTITY_TYPE = Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(HotKettles.MOD_ID, "kettle"), FabricBlockEntityTypeBuilder.create(KettleBlockEntity::new, HotKettleBlocks.KETTLE.get()).build());
 
     @Override
     public void onInitialize() {

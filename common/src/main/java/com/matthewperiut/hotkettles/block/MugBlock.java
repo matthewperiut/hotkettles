@@ -38,7 +38,7 @@ public class MugBlock extends Block {
     }
 
     @Override
-    protected boolean isTransparent(BlockState state) {
+    public boolean isTransparent(BlockState state, BlockView world, BlockPos pos) {
         return true;
     }
 
@@ -48,9 +48,8 @@ public class MugBlock extends Block {
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;
     }
-
     @Override
-    public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         boolean hot = state.get(HOT);
         ItemStack stack = new ItemStack(state.getBlock().asItem());
         if (!hot) {
@@ -68,6 +67,6 @@ public class MugBlock extends Block {
             }
         }
         world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, stack));
-        return super.onBreak(world, pos, state, player);
+        super.onBreak(world, pos, state, player);
     }
 }

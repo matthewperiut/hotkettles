@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hotkettles:hot_water"
+    },
+    {
+      "item": "minecraft:dandelion"
+    }
+  ],
+  "result": {
+    "item": "hotkettles:dandelion_tea"
+  }
+}
