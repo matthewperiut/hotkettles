@@ -176,29 +176,33 @@ public class MugItem extends BlockItem {
                             kettle.setLiquidHorizontalOffset(2);
                             success = true;
                         }
-                        if (i.equals(HotKettleItems.CUP_OF_WATER.get()) || i.equals(HotKettleItems.HOT_WATER.get())) {
-                            if (kettleBlockState.get(KettleBlock.KETTLE_TYPE) == 2) {
-                                kettle.addLiquid();
-                                success = true;
-                            }
+                        if (i.equals(HotKettleItems.CUP_OF_WATER.get())) {
+                            context.getWorld().setBlockState(context.getBlockPos(), kettleBlockState.with(KettleBlock.KETTLE_TYPE, 2));
+                            kettle = (KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos());
+                            kettle.setLiquidLevel(1);
+                            kettle.setLiquidHorizontalOffset(4);
+                            success = true;
                         }
-                        if (i.equals(HotKettleItems.CUP_OF_MILK.get()) || i.equals(HotKettleItems.STEAMED_MILK.get())) {
-                            if (kettleBlockState.get(KettleBlock.KETTLE_TYPE) == 3) {
-                                kettle.addLiquid();
-                                success = true;
-                            }
+                        if (i.equals(HotKettleItems.CUP_OF_MILK.get())) {
+                            context.getWorld().setBlockState(context.getBlockPos(), kettleBlockState.with(KettleBlock.KETTLE_TYPE, 3));
+                            kettle = (KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos());
+                            kettle.setLiquidLevel(1);
+                            kettle.setLiquidHorizontalOffset(6);
+                            success = true;
                         }
-                        if (i.equals(HotKettleItems.BITTER_WATER.get()) || i.equals(HotKettleItems.HOT_COCOA.get())) {
-                            if (kettleBlockState.get(KettleBlock.KETTLE_TYPE) == 4) {
-                                kettle.addLiquid();
-                                success = true;
-                            }
+                        if (i.equals(HotKettleItems.BITTER_WATER.get())) {
+                            context.getWorld().setBlockState(context.getBlockPos(), kettleBlockState.with(KettleBlock.KETTLE_TYPE, 4));
+                            kettle = (KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos());
+                            kettle.setLiquidLevel(1);
+                            kettle.setLiquidHorizontalOffset(8);
+                            success = true;
                         }
-                        if (i.equals(HotKettleItems.APPLE_CIDER.get()) || i.equals(HotKettleItems.HOT_CIDER.get())) {
-                            if (kettleBlockState.get(KettleBlock.KETTLE_TYPE) == 5) {
-                                kettle.addLiquid();
-                                success = true;
-                            }
+                        if (i.equals(HotKettleItems.APPLE_CIDER.get())) {
+                            context.getWorld().setBlockState(context.getBlockPos(), kettleBlockState.with(KettleBlock.KETTLE_TYPE, 5));
+                            kettle = (KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos());
+                            kettle.setLiquidLevel(1);
+                            kettle.setLiquidHorizontalOffset(10);
+                            success = true;
                         }
                         if (i.equals(HotKettleItems.CUP_OF_LAVA.get())) {
                             context.getWorld().setBlockState(context.getBlockPos(), kettleBlockState.with(KettleBlock.KETTLE_TYPE, 6));
@@ -216,25 +220,25 @@ public class MugItem extends BlockItem {
                             success = true;
                         }
                     }
-                    if (i.equals(HotKettleItems.CUP_OF_WATER.get()) || i.equals(HotKettleItems.HOT_WATER.get())) {
+                    if (i.equals(HotKettleItems.CUP_OF_WATER.get())) {
                         if (kettleBlockState.get(KettleBlock.KETTLE_TYPE) == 2) {
                             kettle.addLiquid();
                             success = true;
                         }
                     }
-                    if (i.equals(HotKettleItems.CUP_OF_MILK.get()) || i.equals(HotKettleItems.STEAMED_MILK.get())) {
+                    if (i.equals(HotKettleItems.CUP_OF_MILK.get())) {
                         if (kettleBlockState.get(KettleBlock.KETTLE_TYPE) == 3) {
                             kettle.addLiquid();
                             success = true;
                         }
                     }
-                    if (i.equals(HotKettleItems.BITTER_WATER.get()) || i.equals(HotKettleItems.HOT_COCOA.get())) {
+                    if (i.equals(HotKettleItems.BITTER_WATER.get())) {
                         if (kettleBlockState.get(KettleBlock.KETTLE_TYPE) == 4) {
                             kettle.addLiquid();
                             success = true;
                         }
                     }
-                    if (i.equals(HotKettleItems.APPLE_CIDER.get()) || i.equals(HotKettleItems.HOT_CIDER.get())) {
+                    if (i.equals(HotKettleItems.APPLE_CIDER.get())) {
                         if (kettleBlockState.get(KettleBlock.KETTLE_TYPE) == 5) {
                             kettle.addLiquid();
                             success = true;

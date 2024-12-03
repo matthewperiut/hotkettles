@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "tag": "minecraft:pumpkin"
+    },
+    {
+      "item": "hotkettles:bitter_water",
+      "damage": 1
+    }
+  ],
+  "result": {
+    "item": "hotkettles:pumpkin_spice_latte"
+  }
+}
