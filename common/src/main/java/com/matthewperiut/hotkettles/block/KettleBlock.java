@@ -207,7 +207,7 @@ public class KettleBlock extends BlockWithEntity {
     }
 
     @Override
-    public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
+    protected ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state, boolean includeData) {
         int state_type = state.get(KETTLE_TYPE);
         for (RegistrySupplier<Item> kettle : HotKettleItems.kettles) {
             if (kettle.get() instanceof KettleItem k) {
@@ -218,6 +218,6 @@ public class KettleBlock extends BlockWithEntity {
                 }
             }
         }
-        return super.getPickStack(world, pos, state);
+        return super.getPickStack(world, pos, state, includeData);
     }
 }
