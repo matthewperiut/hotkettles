@@ -2,10 +2,12 @@ package com.matthewperiut.hotkettles.item;
 
 import com.matthewperiut.hotkettles.blockentity.KettleBlockEntity;
 import net.minecraft.block.Block;
+import net.minecraft.component.Component;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
+import org.jetbrains.annotations.Nullable;
 
 import static com.matthewperiut.hotkettles.block.KettleBlock.KETTLE_TYPE;
 import static com.matthewperiut.hotkettles.components.HotKettleComponents.LIQUID_LEVEL_COMPONENT;
@@ -23,11 +25,25 @@ public class KettleItem extends BlockItem {
         return Text.translatable("block." + Registries.ITEM.getId(this).toString().replace(":", "."));
     }
 
+    // hacky but it'll do
+    // seemingly place's item placement context is wrong, giving air for getStack.
+    public static int liquidLevel = -1;
+
+    @Override
+    public @Nullable ItemPlacementContext getPlacementContext(ItemPlacementContext context) {
+        if (context.getStack().contains(LIQUID_LEVEL_COMPONENT.get())) {
+            liquidLevel = context.getStack().get(LIQUID_LEVEL_COMPONENT.get());
+        } else {
+            liquidLevel = -1;
+        }
+        return super.getPlacementContext(context);
+    }
+
     public ActionResult place(ItemPlacementContext context) {
         ActionResult result = super.place(context);
         if (result == ActionResult.SUCCESS) {
-            if (context.getStack().contains(LIQUID_LEVEL_COMPONENT.get())) {
-                int liquidLevel = context.getStack().get(LIQUID_LEVEL_COMPONENT.get());
+
+            if (liquidLevel > -1) {
                 ((KettleBlockEntity) context.getWorld().getBlockEntity(context.getBlockPos())).setLiquidLevel(liquidLevel);
             } else {
                 if (context.getWorld().getBlockState(context.getBlockPos()).get(KETTLE_TYPE) == 0) {
