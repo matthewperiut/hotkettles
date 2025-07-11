@@ -31,4 +31,3 @@ modId = "architectury"
 mandatory = true
 versionRange = "[0,)"
 ordering = "AFTER"
-side = "BOTH"
