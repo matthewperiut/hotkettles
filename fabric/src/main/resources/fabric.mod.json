@@ -27,7 +27,7 @@
   ],
   "depends": {
     "fabric": "*",
-    "minecraft": ["1.21.5","1.21.6"],
+    "minecraft": ["1.21.7","1.21.8"],
     "architectury": "*"
   }
 }
