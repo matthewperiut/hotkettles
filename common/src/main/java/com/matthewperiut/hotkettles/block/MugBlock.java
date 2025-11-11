@@ -6,6 +6,7 @@ import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Property;
@@ -51,6 +52,11 @@ public class MugBlock extends Block {
 
     @Override
     public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        return super.onBreak(world, pos, state, player);
+    }
+
+    @Override
+    protected void onStacksDropped(BlockState state, ServerWorld world, BlockPos pos, ItemStack tool, boolean dropExperience) {
         boolean hot = state.get(HOT);
         ItemStack stack = new ItemStack(state.getBlock().asItem());
         if (!hot) {
@@ -68,6 +74,6 @@ public class MugBlock extends Block {
             }
         }
         world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, stack));
-        return super.onBreak(world, pos, state, player);
+        super.onStacksDropped(state, world, pos, tool, dropExperience);
     }
 }

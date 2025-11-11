@@ -11,6 +11,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -105,7 +106,6 @@ public class KettleBlock extends BlockWithEntity {
                     ItemStack stack = new ItemStack(k);
                     stack.set(LIQUID_LEVEL_COMPONENT.get(), ((KettleBlockEntity) world.getBlockEntity(pos)).liquidLevel);
                     world.spawnEntity(new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, stack));
-                    return super.onBreak(world, pos, state, player);
                 }
             }
         }

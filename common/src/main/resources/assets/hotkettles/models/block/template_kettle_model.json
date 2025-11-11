@@ -88,5 +88,6 @@
 			"translation": [0, 1.25, 0],
 			"scale": [0.8, 0.8, 0.8]
 		}
-	}
+    },
+  "render_type": "minecraft:cutout"
 }

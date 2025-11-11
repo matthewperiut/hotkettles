@@ -31,13 +31,15 @@ public class KettleItem extends BlockItem {
 
     @Override
     public @Nullable ItemPlacementContext getPlacementContext(ItemPlacementContext context) {
-        if (context.getStack().contains(LIQUID_LEVEL_COMPONENT.get())) {
-            liquidLevel = context.getStack().get(LIQUID_LEVEL_COMPONENT.get());
+        Integer liquidLevelValue = context.getStack().get(LIQUID_LEVEL_COMPONENT.get());
+        if (liquidLevelValue != null) {
+            liquidLevel = liquidLevelValue;
         } else {
             liquidLevel = -1;
         }
         return super.getPlacementContext(context);
     }
+
 
     public ActionResult place(ItemPlacementContext context) {
         ActionResult result = super.place(context);
@@ -59,25 +61,21 @@ public class KettleItem extends BlockItem {
 
     @Override
     public int getItemBarStep(ItemStack stack) {
-        if (stack.contains(LIQUID_LEVEL_COMPONENT.get())) {
-            int liquidLevel = stack.get(LIQUID_LEVEL_COMPONENT.get());
-            int result = (int) (liquidLevel * 2.6f);
-            return result;
+        Integer liquidLevel = stack.get(LIQUID_LEVEL_COMPONENT.get());
+        if (liquidLevel != null) {
+            return (int) (liquidLevel * 2.6f);
         }
         return 13;
     }
 
     @Override
     public int getItemBarColor(ItemStack stack) {
-        return 0x00FF00; // Replace with desired RGB color
+        return 0x00FF00; // your color
     }
 
     @Override
     public boolean isItemBarVisible(ItemStack stack) {
-        if (stack.contains(LIQUID_LEVEL_COMPONENT.get())) {
-            int liquidLevel = stack.get(LIQUID_LEVEL_COMPONENT.get());
-            return liquidLevel != 5;
-        }
-        return false;
+        Integer liquidLevel = stack.get(LIQUID_LEVEL_COMPONENT.get());
+        return liquidLevel != null && liquidLevel != 5;
     }
 }

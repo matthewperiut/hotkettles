@@ -2,5 +2,6 @@
 	"parent": "hotkettles:block/template_kettle_model",
 	"textures": {
 		"kettle": "hotkettles:block/bitter_kettle"
-	}
+	},
+  "render_type": "minecraft:cutout"
 }

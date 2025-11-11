@@ -2,5 +2,6 @@
   "parent": "hotkettles:block/template_filled_cup_model",
   "textures": {
     "drink": "hotkettles:block/apple_cider"
-  }
+  },
+  "render_type": "minecraft:cutout"
 }

@@ -17,6 +17,8 @@ import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.state.property.Properties;
+import net.minecraft.storage.ReadView;
+import net.minecraft.storage.WriteView;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -131,26 +133,19 @@ public class KettleBlockEntity extends BlockEntity {
     }
 
     @Override
-    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        super.readNbt(nbt, registryLookup);
-        this.liquidLevel = nbt.getInt("LiquidLevel");
-        this.liquidHorizontalOffset = nbt.getInt("LiquidHorizontalOffset");
+    protected void readData(ReadView view) {
+        super.readData(view);
+        view.getInt("LiquidLevel", 0);
+        view.getInt("LiquidHorizontalOffset", 0);
     }
 
     @Override
-    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        super.writeNbt(nbt, registryLookup);
-        nbt.putInt("LiquidLevel", this.liquidLevel);
-        nbt.putInt("LiquidHorizontalOffset", this.liquidHorizontalOffset);
+    protected void writeData(WriteView view) {
+        super.writeData(view);
+        view.putInt("LiquidLevel", liquidLevel);
+        view.putInt("LiquidHorizontalOffset", liquidHorizontalOffset);
     }
 
-
-    @Override
-    public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registryLookup) {
-        NbtCompound nbt = new NbtCompound();
-        this.writeNbt(nbt, registryLookup);
-        return nbt;
-    }
 
     @Override
     public @Nullable Packet<ClientPlayPacketListener> toUpdatePacket() {

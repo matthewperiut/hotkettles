@@ -35,5 +35,6 @@
 			"rotation": [30, 45, 0],
 			"translation": [0, 2, 0]
 		}
-	}
+    },
+  "render_type": "minecraft:cutout"
 }
