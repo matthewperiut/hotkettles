@@ -8,6 +8,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.entity.FurnaceBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -135,8 +136,9 @@ public class KettleBlockEntity extends BlockEntity {
     @Override
     protected void readData(ReadView view) {
         super.readData(view);
-        view.getInt("LiquidLevel", 0);
-        view.getInt("LiquidHorizontalOffset", 0);
+        liquidLevel = view.getInt("LiquidLevel", 0);
+        liquidHorizontalOffset = view.getInt("LiquidHorizontalOffset", 0);
+        dirX = view.getBoolean("DirX", false);
     }
 
     @Override
@@ -144,12 +146,18 @@ public class KettleBlockEntity extends BlockEntity {
         super.writeData(view);
         view.putInt("LiquidLevel", liquidLevel);
         view.putInt("LiquidHorizontalOffset", liquidHorizontalOffset);
+        view.putBoolean("DirX", dirX);
     }
 
 
     @Override
     public @Nullable Packet<ClientPlayPacketListener> toUpdatePacket() {
         return BlockEntityUpdateS2CPacket.create(this);
+    }
+
+    @Override
+    public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registries) {
+        return createNbtWithIdentifyingData(registries);
     }
 
     public void setLiquidLevel(int level) {

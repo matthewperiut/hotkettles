@@ -152,7 +152,7 @@ public class KettleBlock extends BlockWithEntity {
 
         // info
 //        if (hand == Hand.MAIN_HAND) {
-            if (!world.isClient) {
+            if (!world.isClient()) {
                 if (stack.isEmpty()) {
                     if (state.get(KETTLE_TYPE) == 0) {
                         player.sendMessage(Text.of("Use water bucket, milk bucket, lava bucket, or cactus on kettle to fill."), false);
@@ -178,7 +178,7 @@ public class KettleBlock extends BlockWithEntity {
     }
 
     static ActionResult fillKettleLiquid(World world, BlockPos pos, PlayerEntity player, ItemStack stack, BlockState state, SoundEvent soundEvent, int nextKettleType, boolean decrement) {
-        if (!world.isClient) {
+        if (!world.isClient()) {
             if (decrement) {
                 player.getMainHandStack().decrement(1);
             } else {
@@ -194,7 +194,7 @@ public class KettleBlock extends BlockWithEntity {
     }
 
     static ActionResult takeKettleLiquid(World world, BlockPos pos, PlayerEntity player, ItemStack stack, BlockState state, SoundEvent soundEvent, Item replaced) {
-        if (!world.isClient) {
+        if (!world.isClient()) {
             player.setStackInHand(Hand.MAIN_HAND, ItemUsage.exchangeStack(stack, player, new ItemStack(replaced)));
             world.setBlockState(pos, state.with(KETTLE_TYPE, 0));
             world.playSound((PlayerEntity)null, pos, soundEvent, SoundCategory.BLOCKS, 1.0F, 1.0F);

@@ -52,7 +52,7 @@ public class MugItem extends BlockItem {
             serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
         }
 
-        if (!world.isClient) {
+        if (!world.isClient()) {
             if (getTranslationKey().contains("lava")) {
                 user.setOnFireFromLava();
             }
