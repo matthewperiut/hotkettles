@@ -37,8 +37,6 @@ public class KettleBlockEntityRenderer implements BlockEntityRenderer<KettleBloc
     public void updateRenderState(KettleBlockEntity kettleBlockEntity, KettleBlockEntityRenderState renderState, float tickDelta, Vec3d cameraPos, @Nullable ModelCommandRenderer.CrumblingOverlayCommand crumblingOverlay) {
         BlockEntityRenderer.super.updateRenderState(kettleBlockEntity, renderState, tickDelta, cameraPos, crumblingOverlay);
 
-        System.out.println(kettleBlockEntity.liquidLevel + " " + kettleBlockEntity.liquidHorizontalOffset);
-
         // Transfer data from block entity to render state
         renderState.liquidHorizontalOffset = kettleBlockEntity.liquidHorizontalOffset;
         renderState.liquidLevel = kettleBlockEntity.liquidLevel;

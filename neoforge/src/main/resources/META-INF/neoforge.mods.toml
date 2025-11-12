@@ -16,6 +16,9 @@ logoFile = "assets/hotkettles/icon.png"
 [[mixins]]
 config = "hotkettles-common.mixins.json"
 
+[[mixins]]
+config = "hotkettles-neoforge.mixins.json"
+
 [[dependencies.hotkettles]]
 modId="minecraft"
 type="required"
