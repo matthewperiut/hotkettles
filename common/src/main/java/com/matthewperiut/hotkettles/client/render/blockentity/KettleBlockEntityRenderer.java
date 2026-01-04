@@ -25,6 +25,13 @@ public class KettleBlockEntityRenderer implements BlockEntityRenderer<KettleBloc
 
     private static final float Z_FIGHT_OFFSET = 0.001F;
 
+    // Buffer size calculation for shader compatibility (Iris adds extra vertex data):
+    // Standard vertex: ~36 bytes (position, color, texture, overlay, light, normal)
+    // With Iris shaders: ~80+ bytes per vertex (adds mid UV, block ID, tangent, etc.)
+    // 2 quads * 4 vertices * 80 bytes = 640 bytes minimum
+    // Using 4096 bytes for safety margin and future compatibility
+    private static final int BUFFER_SIZE = 4096;
+
     public KettleBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
     }
 
@@ -45,9 +52,6 @@ public class KettleBlockEntityRenderer implements BlockEntityRenderer<KettleBloc
 
     @Override
     public void render(KettleBlockEntityRenderState renderState, MatrixStack matrices, OrderedRenderCommandQueue queue, CameraRenderState cameraRenderState) {
-        // For now, we'll use immediate rendering as a fallback
-        // In 1.21.10, custom quad rendering might need a different approach
-
         matrices.push();
 
         // Translate to the block's position
@@ -59,8 +63,9 @@ public class KettleBlockEntityRenderer implements BlockEntityRenderer<KettleBloc
         float TEXTURE_WIDTH = 2;
         float TEXTURE_HEIGHT = 5;
 
-        // Get immediate mode vertex consumer provider
-        VertexConsumerProvider.Immediate immediate = VertexConsumerProvider.immediate(BufferAllocator.fixedSized(288));
+        // Use a larger buffer size to accommodate shader mods like Iris
+        // which add extra vertex attributes for shadow rendering
+        VertexConsumerProvider.Immediate immediate = VertexConsumerProvider.immediate(BufferAllocator.fixedSized(BUFFER_SIZE));
         RenderLayer renderLayer = RenderLayer.getEntityCutout(LIQUIDS_TEXTURE);
         VertexConsumer vertexConsumer = immediate.getBuffer(renderLayer);
 
