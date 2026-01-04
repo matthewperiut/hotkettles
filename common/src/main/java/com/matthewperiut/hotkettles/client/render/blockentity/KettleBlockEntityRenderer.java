@@ -3,10 +3,7 @@ package com.matthewperiut.hotkettles.client.render.blockentity;
 import com.matthewperiut.hotkettles.blockentity.KettleBlockEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.OverlayTexture;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.*;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.command.ModelCommandRenderer;
@@ -66,7 +63,7 @@ public class KettleBlockEntityRenderer implements BlockEntityRenderer<KettleBloc
         // Use a larger buffer size to accommodate shader mods like Iris
         // which add extra vertex attributes for shadow rendering
         VertexConsumerProvider.Immediate immediate = VertexConsumerProvider.immediate(BufferAllocator.fixedSized(BUFFER_SIZE));
-        RenderLayer renderLayer = RenderLayer.getEntityCutout(LIQUIDS_TEXTURE);
+        RenderLayer renderLayer = RenderLayers.entityCutout(LIQUIDS_TEXTURE);
         VertexConsumer vertexConsumer = immediate.getBuffer(renderLayer);
 
         // Render the liquid quads
